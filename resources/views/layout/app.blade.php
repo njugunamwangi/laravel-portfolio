@@ -15,12 +15,14 @@
         
         @vite(['resources/css/app.css'])
     </head>
-    <body class="antialiased">
-        <!-- ====== Navbar Section Start -->
-        <x-layout.navbar></x-layout.navbar>
-        <!-- ====== Navbar Section End -->
-        {{$slot}}
-        <footer>Footer</footer>
+    <body class="antialiased text-gray-800 dark:text-gray-200">
+        <div class="min-h-screen bg-gray-100 dark:bg-gray-900 pt-24">
+            <!-- ====== Navbar Section Start -->
+                <x-layout.navbar></x-layout.navbar>
+            <!-- ====== Navbar Section End -->
+            {{$slot}}
+            <x-layout.footer></x-layout.footer>
+        </div>
         @vite(['resources/js/app.js'])
     </body>
 </html>
