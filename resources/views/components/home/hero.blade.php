@@ -1,5 +1,5 @@
 <!-- Hero Section start -->
-<div class="relative bg-white pt-[120px] pb-[110px] lg:pt-[150px] dark:bg-slate-800">
+<div class="relative bg-white pt-[100px] pb-[110px] lg:pt-[110px] dark:bg-slate-800">
     <div class="container mx-auto">
         <div class="-mx-4 flex flex-wrap">
             <div class="w-full px-4 lg:w-5/12">
