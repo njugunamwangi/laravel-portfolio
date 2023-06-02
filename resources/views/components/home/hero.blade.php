@@ -2,7 +2,7 @@
 <div class="relative bg-white pt-[100px] pb-[110px] lg:pt-[110px] dark:bg-slate-800">
     <div class="container mx-auto">
         <div class="-mx-4 flex flex-wrap">
-            <div class="w-full px-4 lg:w-5/12">
+            <div class="w-full px-4 lg:w-5/12 pt-[100px]">
                 <div class="hero-content">
                     <h1 class="text-dark dark:text-gray-200 mb-6 text-4xl font-bold leading-snug sm:text-[42px] lg:text-[40px] xl:text-[42px]" >
                         I am Njuguna Mwangi, <br />
