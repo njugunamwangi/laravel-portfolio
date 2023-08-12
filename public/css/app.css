@@ -723,6 +723,9 @@ input[type="radio"]:checked ~ .box .circle{
 .mt-10{
   margin-top: 2.5rem;
 }
+.mr-4{
+  margin-right: 1rem;
+}
 .block{
   display: block;
 }
@@ -959,6 +962,14 @@ input[type="radio"]:checked ~ .box .circle{
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
 }
+.px-8{
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+.py-12{
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
 .pt-24{
   padding-top: 6rem;
 }
@@ -1040,6 +1051,9 @@ input[type="radio"]:checked ~ .box .circle{
 }
 .leading-normal{
   line-height: 1.5;
+}
+.leading-tight{
+  line-height: 1.25;
 }
 .tracking-wider{
   letter-spacing: 0.05em;
@@ -1709,6 +1723,12 @@ input[type="radio"]:checked ~ .box span{
   --tw-border-opacity: 1;
   border-color: rgb(48 86 211 / var(--tw-border-opacity));
 }
+@media (min-width: 400px){
+
+  .xs\:block{
+    display: block;
+  }
+}
 @media (min-width: 540px){
 
   .sm\:-mx-4{
@@ -1718,6 +1738,10 @@ input[type="radio"]:checked ~ .box span{
 
   .sm\:mr-4{
     margin-right: 1rem;
+  }
+
+  .sm\:mb-8{
+    margin-bottom: 2rem;
   }
 
   .sm\:items-center{
@@ -1755,8 +1779,16 @@ input[type="radio"]:checked ~ .box span{
     font-size: 2.25rem;
     line-height: 2.5rem;
   }
+
+  .sm\:text-\[38px\]{
+    font-size: 38px;
+  }
 }
 @media (min-width: 720px){
+
+  .md\:p-\[70px\]{
+    padding: 70px;
+  }
 
   .md\:px-9{
     padding-left: 2.25rem;
@@ -1787,6 +1819,10 @@ input[type="radio"]:checked ~ .box span{
 
   .lg\:mt-0{
     margin-top: 0px;
+  }
+
+  .lg\:mb-0{
+    margin-bottom: 0px;
   }
 
   .lg\:block{
@@ -1835,6 +1871,10 @@ input[type="radio"]:checked ~ .box span{
 
   .lg\:items-center{
     align-items: center;
+  }
+
+  .lg\:justify-end{
+    justify-content: flex-end;
   }
 
   .lg\:px-0{
