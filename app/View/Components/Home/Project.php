@@ -1,19 +1,43 @@
 <?php
 
-namespace App\View\Components\home;
+namespace App\View\Components\Home;
 
 use Closure;
-use Illuminate\View\Component;
 use Illuminate\Contracts\View\View;
+use Illuminate\View\Component;
+use Illuminate\Support\Arr;
 
 class Project extends Component
 {
+    public array $items = [];
+    public array $tabs = [];
     /**
      * Create a new component instance.
      */
     public function __construct()
     {
-        //
+        $this->items = [
+            [
+                'category' => ['PHP', 'Wordpress'],
+                'title' => 'In2 Drones Technology Solutions',
+                'image' => url('/img/projects/in2drones.png'),
+                'projectUrl' => 'https://in2dronestechsolutions.com/'
+            ],
+            [
+                'category' => ['PHP', 'Wordpress'],
+                'title' => 'Travel with Lewis',
+                'image' => url('/img/projects/travelwithlewis.png'),
+                'projectUrl' => 'https://travelwithlewis.co.ke/'
+            ],
+            [
+                'category' => ['PHP', 'Laravel'],
+                'title' => 'Portfolio',
+                'image' => url('/img/projects/portfolio.png'),
+                'projectUrl' => 'http://localhost'
+            ],
+        ];
+
+        $this->tabs = array_unique(Arr::flatten(Arr::pluck($this->items, 'category')));
     }
 
     /**
