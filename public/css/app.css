@@ -417,6 +417,10 @@ body{
   padding-r-ight: 16px;
 }
 
+input[type="radio"]:checked ~ .box .circle{
+  background: #3056D3;
+}
+
 .shipping:checked ~ label .title{
   color: #3056D3;
 }
@@ -627,6 +631,12 @@ body{
 .top-10{
   top: 2.5rem;
 }
+.-bottom-8{
+  bottom: -2rem;
+}
+.-left-8{
+  left: -2rem;
+}
 .z-50{
   z-index: 50;
 }
@@ -681,6 +691,15 @@ body{
 .mr-3{
   margin-right: 0.75rem;
 }
+.mb-4{
+  margin-bottom: 1rem;
+}
+.mb-6{
+  margin-bottom: 1.5rem;
+}
+.mb-8{
+  margin-bottom: 2rem;
+}
 .block{
   display: block;
 }
@@ -713,6 +732,9 @@ body{
 }
 .h-\[2px\]{
   height: 2px;
+}
+.h-\[1px\]{
+  height: 1px;
 }
 .min-h-screen{
   min-height: 100vh;
@@ -747,6 +769,9 @@ body{
 .max-w-xl{
   max-width: 36rem;
 }
+.max-w-\[480px\]{
+  max-width: 480px;
+}
 .-translate-y-1\/2{
   --tw-translate-y: -50%;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -778,6 +803,12 @@ body{
 .rounded-full{
   border-radius: 9999px;
 }
+.rounded-md{
+  border-radius: 0.375rem;
+}
+.rounded{
+  border-radius: 0.25rem;
+}
 .border{
   border-width: 1px;
 }
@@ -806,6 +837,18 @@ body{
   --tw-border-opacity: 1;
   border-color: rgb(9 14 52 / var(--tw-border-opacity));
 }
+.border-gray-700{
+  --tw-border-opacity: 1;
+  border-color: rgb(55 65 81 / var(--tw-border-opacity));
+}
+.border-primary{
+  --tw-border-opacity: 1;
+  border-color: rgb(48 86 211 / var(--tw-border-opacity));
+}
+.border-red-700{
+  --tw-border-opacity: 1;
+  border-color: rgb(185 28 28 / var(--tw-border-opacity));
+}
 .bg-gray-100{
   --tw-bg-opacity: 1;
   background-color: rgb(243 244 246 / var(--tw-bg-opacity));
@@ -821,6 +864,18 @@ body{
 .bg-gray-200{
   --tw-bg-opacity: 1;
   background-color: rgb(229 231 235 / var(--tw-bg-opacity));
+}
+.bg-gray-900{
+  --tw-bg-opacity: 1;
+  background-color: rgb(17 24 39 / var(--tw-bg-opacity));
+}
+.bg-primary{
+  --tw-bg-opacity: 1;
+  background-color: rgb(48 86 211 / var(--tw-bg-opacity));
+}
+.bg-red-700{
+  --tw-bg-opacity: 1;
+  background-color: rgb(185 28 28 / var(--tw-bg-opacity));
 }
 .fill-current{
   fill: currentColor;
@@ -870,6 +925,18 @@ body{
 .pt-8{
   padding-top: 2rem;
 }
+.pb-\[110px\]{
+  padding-bottom: 110px;
+}
+.pt-11{
+  padding-top: 2.75rem;
+}
+.pt-16{
+  padding-top: 4rem;
+}
+.pt-\[100px\]{
+  padding-top: 100px;
+}
 .text-center{
   text-align: center;
 }
@@ -889,6 +956,14 @@ body{
   font-size: 0.75rem;
   line-height: 1rem;
 }
+.text-4xl{
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+.text-base{
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
 .font-bold{
   font-weight: 700;
 }
@@ -898,11 +973,20 @@ body{
 .font-medium{
   font-weight: 500;
 }
+.font-normal{
+  font-weight: 400;
+}
 .uppercase{
   text-transform: uppercase;
 }
 .leading-7{
   line-height: 1.75rem;
+}
+.leading-snug{
+  line-height: 1.375;
+}
+.leading-normal{
+  line-height: 1.5;
 }
 .tracking-wider{
   letter-spacing: 0.05em;
@@ -947,6 +1031,18 @@ body{
   --tw-text-opacity: 1;
   color: rgb(9 14 52 / var(--tw-text-opacity));
 }
+.text-amber-600{
+  --tw-text-opacity: 1;
+  color: rgb(217 119 6 / var(--tw-text-opacity));
+}
+.text-body-color{
+  --tw-text-opacity: 1;
+  color: rgb(99 115 129 / var(--tw-text-opacity));
+}
+.text-white{
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
 .underline{
   text-decoration-line: underline;
 }
@@ -964,9 +1060,19 @@ body{
   --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
+.outline-primary{
+  outline-color: #3056D3;
+}
 .ring-primary{
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(48 86 211 / var(--tw-ring-opacity));
+}
+.transition{
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
 }
 
 body {
@@ -1472,9 +1578,28 @@ input[type="radio"]:checked ~ .box span{
   --tw-border-opacity: 1;
   border-color: rgb(48 86 211 / var(--tw-border-opacity));
 }
+.hover\:border-red-700:hover{
+  --tw-border-opacity: 1;
+  border-color: rgb(185 28 28 / var(--tw-border-opacity));
+}
 .hover\:bg-primary:hover{
   --tw-bg-opacity: 1;
   background-color: rgb(48 86 211 / var(--tw-bg-opacity));
+}
+.hover\:bg-gray-800:hover{
+  --tw-bg-opacity: 1;
+  background-color: rgb(31 41 55 / var(--tw-bg-opacity));
+}
+.hover\:bg-red-700:hover{
+  --tw-bg-opacity: 1;
+  background-color: rgb(185 28 28 / var(--tw-bg-opacity));
+}
+.hover\:bg-red-800:hover{
+  --tw-bg-opacity: 1;
+  background-color: rgb(153 27 27 / var(--tw-bg-opacity));
+}
+.hover\:bg-opacity-80:hover{
+  --tw-bg-opacity: 0.8;
 }
 .hover\:text-primary:hover{
   --tw-text-opacity: 1;
@@ -1549,6 +1674,17 @@ input[type="radio"]:checked ~ .box span{
   .sm\:pt-0{
     padding-top: 0px;
   }
+
+  .sm\:text-\[42px\]{
+    font-size: 42px;
+  }
+}
+@media (min-width: 720px){
+
+  .md\:px-9{
+    padding-left: 2.25rem;
+    padding-right: 2.25rem;
+  }
 }
 @media (min-width: 960px){
 
@@ -1566,6 +1702,10 @@ input[type="radio"]:checked ~ .box span{
 
   .lg\:mr-3{
     margin-right: 0.75rem;
+  }
+
+  .lg\:ml-auto{
+    margin-left: auto;
   }
 
   .lg\:block{
@@ -1592,6 +1732,18 @@ input[type="radio"]:checked ~ .box span{
     width: 100%;
   }
 
+  .lg\:w-1\/12{
+    width: 8.333333%;
+  }
+
+  .lg\:w-5\/12{
+    width: 41.666667%;
+  }
+
+  .lg\:w-6\/12{
+    width: 50%;
+  }
+
   .lg\:max-w-full{
     max-width: 100%;
   }
@@ -1610,6 +1762,27 @@ input[type="radio"]:checked ~ .box span{
     padding-right: 2rem;
   }
 
+  .lg\:px-6{
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .lg\:pt-0{
+    padding-top: 0px;
+  }
+
+  .lg\:pt-\[110px\]{
+    padding-top: 110px;
+  }
+
+  .lg\:text-right{
+    text-align: right;
+  }
+
+  .lg\:text-\[40px\]{
+    font-size: 40px;
+  }
+
   .lg\:shadow-none{
     --tw-shadow: 0 0 #0000;
     --tw-shadow-colored: 0 0 #0000;
@@ -1626,9 +1799,18 @@ input[type="radio"]:checked ~ .box span{
     margin-right: 1rem;
   }
 
+  .xl\:px-9{
+    padding-left: 2.25rem;
+    padding-right: 2.25rem;
+  }
+
   .xl\:text-2xl{
     font-size: 1.5rem;
     line-height: 2rem;
+  }
+
+  .xl\:text-\[42px\]{
+    font-size: 42px;
   }
 }
 
