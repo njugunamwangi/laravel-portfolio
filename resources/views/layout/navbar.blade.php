@@ -3,7 +3,7 @@
     <div class="container mx-auto">
         <div class="relative -mx-4 flex items-center justify-between relative">
             <div class="w-60 max-w-full px-4">
-                <a href="javascript:void(0)" class="w-full flex items-center py-2">
+                <a href="/" class="w-full flex items-center py-2">
                     <!-- for dark mode -->
                     <img src="{{ url('img/smartlearn.png') }}" alt="logo" class="w-[48px] lg:w-[64px] hidden dark:inline-block" />
                     <!-- for light mode -->

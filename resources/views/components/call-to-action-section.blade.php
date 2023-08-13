@@ -7,10 +7,7 @@
             Get started today
         </h2>
     </x-slot:title>
-    <x-button-link href="javascript:void(0)" variant="dark" class="mr-4" target="_blank" >
-        Get Pro Version
-    </x-button-link>
-    <x-button-link href="javascript:void(0)" variant="red" target="_blank" >
-        Start Free Trial
+    <x-button-link href="#contact" variant="dark" class="mr-4"  >
+        Get in Touch
     </x-button-link>
 </x-call-to-action>
