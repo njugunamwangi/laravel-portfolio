@@ -6,7 +6,9 @@
 
         <meta name="csrf-token" content="{{ csrf_token() }}" />
 
-        <title>Laravel</title>
+        <link rel="icon" type="image/x-icon" href="{{ asset('/img/favicon.ico') }}">
+
+        <title>NjugunaMwangi</title>
 
         <link href="{{ asset('css/app.css') }}" rel="stylesheet"/>
     </head>

@@ -1,5 +1,5 @@
 <!-- Hero Section start -->
-<div class="relative bg-white pt-[100px] pb-[110px] lg:pt-[110px] dark:bg-slate-800">
+<div id="home" class="relative bg-white pt-[100px] pb-[110px] lg:pt-[110px] dark:bg-slate-800">
     <div class="container mx-auto">
         <div class="-mx-4 flex flex-wrap">
             <div class="w-full px-4 lg:w-5/12 pt-[100px]">
@@ -9,11 +9,14 @@
                         a <span class="rounded-md text-amber-600">Full Stack Web Artisan</span>
                     </h1>
                     <p class="text-body-color mb-8 max-w-[480px] text-base">
-                        With TailGrids, business and students thrive together. Business can
-                        perfectly match their staffing to changing demand throughout the
-                        dayed.
+                        Unlocking the digital realm's potential, I weave intricate codes into captivating user experiences. With an eye for design and a passion for innovation, I sculpt dynamic websites that bridge imagination and functionality. Join me on a journey where pixels transform into portals of boundless possibilities.
                     </p>
                     <ul class="flex flex-wrap items-center">
+                        <li>
+                            <x-button-link href="#about" variant="amber" class="rounded-lg mr-4">
+                                About Me
+                            </x-button-link>
+                        </li>
                         <li>
                             <x-button-link href="#projects" variant="primary" class="rounded-lg">
                                 My Projects

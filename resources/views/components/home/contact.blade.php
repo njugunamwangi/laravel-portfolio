@@ -13,9 +13,7 @@
                         GET IN TOUCH
                     </h2>
                     <p class="text-body-color mb-9 text-base leading-relaxed">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eius
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim adiqua
-                        minim veniam quis nostrud exercitation ullamco
+                        Let's chat. Tell me about your project
                     </p>
                     <div class="mb-8 flex w-full max-w-[370px]">
                         <div

@@ -425,6 +425,10 @@ input[type="radio"]:checked ~ .box .circle{
   color: #3056D3;
 }
 
+.download-radio:checked ~ label .icon{
+  opacity: 1;
+}
+
 .autoSaverSwitch input:checked ~ .label .on{
   display: block;
 }
@@ -451,6 +455,27 @@ input[type="radio"]:checked ~ .box .circle{
 .themeSwitcherThree input:checked ~ div .dark{
   background: #3056D3;
   color: #fff;
+}
+
+.checkbox-list:checked ~ label .icon{
+  opacity: 1;
+}
+
+.box-select-1:checked ~ label .box .icon{
+  opacity: 1;
+}
+
+.select-list:checked ~ label .icon{
+  background: #3056D3;
+}
+
+.tableCheckbox:checked ~ label .icon{
+  opacity: 1;
+}
+
+.tableCheckbox-2:checked ~ label .icon{
+  color: #fff;
+  opacity: 1;
 }
 
 *, ::before, ::after{
@@ -901,6 +926,18 @@ input[type="radio"]:checked ~ .box .circle{
   --tw-border-opacity: 1;
   border-color: rgb(185 28 28 / var(--tw-border-opacity));
 }
+.border-amber-700{
+  --tw-border-opacity: 1;
+  border-color: rgb(180 83 9 / var(--tw-border-opacity));
+}
+.border-amber-400{
+  --tw-border-opacity: 1;
+  border-color: rgb(251 191 36 / var(--tw-border-opacity));
+}
+.border-amber-600{
+  --tw-border-opacity: 1;
+  border-color: rgb(217 119 6 / var(--tw-border-opacity));
+}
 .bg-body-color{
   --tw-bg-opacity: 1;
   background-color: rgb(99 115 129 / var(--tw-bg-opacity));
@@ -936,6 +973,18 @@ input[type="radio"]:checked ~ .box .circle{
 .bg-white{
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+.bg-amber-900{
+  --tw-bg-opacity: 1;
+  background-color: rgb(120 53 15 / var(--tw-bg-opacity));
+}
+.bg-amber-400{
+  --tw-bg-opacity: 1;
+  background-color: rgb(251 191 36 / var(--tw-bg-opacity));
+}
+.bg-amber-600{
+  --tw-bg-opacity: 1;
+  background-color: rgb(217 119 6 / var(--tw-bg-opacity));
 }
 .bg-opacity-5{
   --tw-bg-opacity: 0.05;

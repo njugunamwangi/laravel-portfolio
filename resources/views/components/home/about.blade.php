@@ -7,14 +7,14 @@
                     <div class="w-full px-3 sm:px-4 xl:w-1/2">
                         <div class="py-3 sm:py-4">
                             <img
-                                src="https://cdn.tailgrids.com/2.0/image/marketing/images/about/about-01/image-1.jpg"
+                                src="{{ asset('img/about1.jpg') }}"
                                 alt=""
                                 class="w-full rounded-2xl"
                             />
                         </div>
                         <div class="py-3 sm:py-4">
                             <img
-                                src="https://cdn.tailgrids.com/2.0/image/marketing/images/about/about-01/image-2.jpg"
+                                src="{{ asset('img/about2.jpg') }}"
                                 alt=""
                                 class="w-full rounded-2xl"
                             />
@@ -39,14 +39,10 @@
                         About Me
                     </h2>
                     <p class="text-body-color mb-8 text-base">
-                        It is a long established fact that a reader will be distracted by
-                        the readable content of a page when looking at its layout. The point
-                        of using Lorem Ipsum is that it has a more-or-less.
+                        In the ever-expanding realm of the internet, where innovation and creativity interlace with technology, a profound opportunity emerges for those who possess the power to craft virtual landscapes that captivate and inspire. Picture a digital artisan, seamlessly blending aesthetics and functionality, breathing life into virtual spaces that engage, inform, and delight. This is the world of web development, a realm where each keystroke translates into an immersive experience, and where a master of the craft wields tools like WordPress, Laravel, and Livewire to mold the digital reality of tomorrow.
                     </p>
                     <p class="text-body-color mb-12 text-base">
-                        A domain name is one of the first steps to establishing your brand.
-                        Secure a consistent brand image with a domain name that matches your
-                        business.
+                        The symphony of WordPress, Laravel, and Livewire represents a symposium of technologies that dance in harmony to compose the web's future. At its core, web development is more than just creating visually appealing websites; it's an intricate ballet of design principles, user experience, and technological prowess. Imagine a user landing on a website, effortlessly gliding through a smooth and intuitive interface. This is the magic of a web developer skilled in the art of WordPress, Laravel, and Livewire. The art and craft with which I've perfected over the years and my work speaks for me.
                     </p>
                     <x-button-link href="https://github.com/njugunamwangi" variant="primary" target="_blank">
                         Github

@@ -8,6 +8,7 @@
             'hover:bg-red-700 hover:border-red-700 hover:text-white' => $variant === 'outline-red',
             'bg-red-700 border-red-700 text-white hover:bg-red-800' => $variant === 'red',
             'bg-gray-900 border-gray-700 text-white hover:bg-gray-800' => $variant === 'dark',
+            'bg-amber-600 border-amber-600 text-white hover:bg-gray-800' => $variant === 'amber',
             'bg-primary border-primary text-white hover:bg-opacity-80' => $variant === 'primary'
         ])
     }} >

@@ -1,6 +1,6 @@
 <div {{ $attributes->class(['flex items-center']) }}>
     <a
-        href="javascript:void(0)"
+        href="https://www.facebook.com/njugunadesmond"
         target="_blank"
         class="text-dark mr-3 flex h-8 w-8 items-center justify-center rounded-full hover:text-white sm:mr-4 lg:mr-3 xl:mr-4
                hover:border-primary hover:text-white hover:dark:border-primary
@@ -23,7 +23,7 @@
         </svg>
     </a>
     <a
-        href="javascript:void(0)"
+        href="https://twitter.com/__hostDes"
         target="_blank"
         class="text-dark mr-3 flex h-8 w-8 items-center justify-center rounded-full hover:text-white sm:mr-4 lg:mr-3 xl:mr-4
                  hover:border-primary hover:text-white hover:dark:border-primary
@@ -41,7 +41,7 @@
         </svg>
     </a>
     <a
-        href="javascript:void(0)"
+        href="https://www.instagram.com/_.ndachi._/"
         target="_blank"
         class="text-dark mr-3 flex h-8 w-8 items-center justify-center rounded-full hover:text-white sm:mr-4 lg:mr-3 xl:mr-4
                 hover:border-primary hover:text-white hover:dark:border-primary
@@ -76,7 +76,7 @@
         </svg>
     </a>
     <a
-        href="javascript:void(0)"
+        href="https://www.linkedin.com/in/njuguna-mwangi-161aa7257/"
         target="_blank"
         class="text-dark mr-3 flex h-8 w-8 items-center justify-center rounded-full hover:text-white sm:mr-4 lg:mr-3 xl:mr-4
                 hover:border-primary hover:text-white hover:dark:border-primary

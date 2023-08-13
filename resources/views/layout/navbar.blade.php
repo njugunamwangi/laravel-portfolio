@@ -3,11 +3,11 @@
     <div class="container mx-auto">
         <div class="relative -mx-4 flex items-center justify-between relative">
             <div class="w-60 max-w-full px-4">
-                <a href="/" class="w-full flex items-center py-2">
+                <a href="#home" class="w-full flex items-center py-2">
                     <!-- for dark mode -->
-                    <img src="{{ url('img/smartlearn.png') }}" alt="logo" class="w-[48px] lg:w-[64px] hidden dark:inline-block" />
+                    <img src="{{ url('img/logo.png') }}" alt="logo" class="w-[48px] lg:w-[64px] hidden dark:inline-block" />
                     <!-- for light mode -->
-                    <img src="{{ url('img/smartlearn.png') }}" alt="logo" class="w-[48px] lg:w-[64px] inline-block dark:hidden" />
+                    <img src="{{ url('img/logo.png') }}" alt="logo" class="w-[48px] lg:w-[64px] inline-block dark:hidden" />
                     <span class="text-xl px-2 xl:text-2xl font-bold text-[#0c7187] dark:text-white" >NjugunaMwangi.</span>
                 </a>
             </div>
