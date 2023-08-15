@@ -2,7 +2,7 @@ import {Navigate, Outlet} from "react-router-dom";
 import {useStateContext} from "../context/ContextProvider.jsx";
 
 export default function AuthLayout() {
-    const {currentUser,userToken} = useStateContext();
+    const { userToken} = useStateContext();
 
     if(userToken) {
         return <Navigate to='/' />
