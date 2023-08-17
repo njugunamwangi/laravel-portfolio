@@ -3,6 +3,7 @@ import { Disclosure, Menu, Transition } from '@headlessui/react'
 import {Bars3Icon, BellIcon, UserIcon, XMarkIcon} from '@heroicons/react/24/outline'
 import {Navigate, NavLink, Outlet} from "react-router-dom";
 import {useStateContext} from "../context/ContextProvider.jsx";
+import axiosClient from '../../axios.js';
 
 const navigation = [
     { name: 'Dashboard', to: '/'},
@@ -15,7 +16,7 @@ function classNames(...classes) {
 }
 
 export default function AdminLayout() {
-    const { currentUser, userToken} = useStateContext()
+    const { currentUser, userToken, setCurrentUser, setUserToken } = useStateContext()
 
     const logout = (ev) => {
         ev.preventDefault()
@@ -24,6 +25,15 @@ export default function AdminLayout() {
 
     if (!userToken) {
         return <Navigate to="login" />
+    }
+
+    const logOut = (ev) => {
+        ev.preventDefault();
+        axiosClient.post('/logout')
+            .then(res => {
+                setCurrentUser({})
+                setUserToken(null)
+            })
     }
 
     return (
@@ -86,7 +96,7 @@ export default function AdminLayout() {
                                                         <Menu.Item>
                                                             <a
                                                                 href="#"
-                                                                onClick={(ev) => logout(ev)}
+                                                                onClick={(ev) => logOut(ev)}
                                                                 className={classNames(
                                                                     'block px-4 py-2 text-sm text-gray-700'
                                                                 )}
@@ -141,9 +151,8 @@ export default function AdminLayout() {
                                     </div>
                                     <div className="mt-3 space-y-1 px-2">
                                         <Disclosure.Button
-                                            as="a"
                                             href="#"
-                                            onClick={(ev) => logout(ev)}
+                                            onClick={(ev) => logOut(ev)}
                                             className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
                                         >
                                             Sign Out
