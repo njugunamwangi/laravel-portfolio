@@ -6,6 +6,10 @@ const StateContext = createContext({
     textWidgets: {},
     projects: {},
     categories: {},
+    toast: {
+        message: null,
+        show: false
+    },
     setCurrentUser: () => {},
     setUserToken: () => {}
 })
@@ -203,6 +207,8 @@ export const ContextProvider = ({children}) => {
 
     const [ categories, setCategories ] = useState(tmpCategories)
 
+    const [ toast, setToast ] = useState({message: '', show: false})
+
     return (
         <StateContext.Provider value={{
             currentUser,
@@ -211,7 +217,9 @@ export const ContextProvider = ({children}) => {
             setUserToken,
             textWidgets,
             projects,
-            categories
+            categories,
+            toast,
+            setToast
         }}>
             {children}
         </StateContext.Provider>
