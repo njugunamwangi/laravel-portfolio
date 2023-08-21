@@ -6,6 +6,7 @@ import Projects from "./views/Projects.jsx";
 import TextWidgets from "./views/TextWidgets.jsx";
 import AuthLayout from "./views/components/AuthLayout.jsx";
 import AdminLayout from "./views/components/AdminLayout.jsx";
+import Categories from "./views/Categories.jsx";
 
 const router = createBrowserRouter([
     {
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Dashboard />
+            },
+            {
+                path: 'categories',
+                element: <Categories />
             },
             {
                 path: 'projects',
