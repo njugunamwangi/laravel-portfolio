@@ -7,6 +7,7 @@ import axiosClient from '../../axios.js';
 
 const navigation = [
     { name: 'Dashboard', to: '/'},
+    { name: 'Categories', to: '/categories'},
     { name: 'Projects', to: '/projects'},
     { name: 'Text Widgets', to: '/text-widgets'},
 ]
