@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\URL;
 
-class TextWidgetResource extends JsonResource
+class ProjectResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -17,13 +17,14 @@ class TextWidgetResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'key' => $this->key,
+            'name' => $this->name,
+            'slug' => $this->slug,
             'image_url' => $this->image ? URL::to($this->image) : null,
-            'title' => $this->title,
-            'content' => $this->content,
+            'project_url' => $this->project_url,
             'active' => !!$this->active,
             'created_at' => $this->created_at->format('Y-m-d H:i:s'),
             'updated_at' => $this->updated_at->format('Y-m-d H:i:s'),
+            'categories' => CategoryResource::collection($this->categories)
         ];
     }
 }
