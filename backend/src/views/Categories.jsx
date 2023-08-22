@@ -9,6 +9,11 @@ import { PlusIcon, SquaresPlusIcon } from "@heroicons/react/20/solid";
 export default function Categories() {
     const { categories } = useStateContext()
 
+    const [category, setCategory] = useState({
+        category: "",
+        slug: ""
+    })
+
     const [isAddCategoryModalOpen, setIsAddCategoryModalOpen] = useState(false)
 
     const openAddCategoryModal = () => {
@@ -26,6 +31,8 @@ export default function Categories() {
     const onSubmit = (ev) => {
 
     }
+
+
 
     const cancelButtonRef = useRef(null)
 
@@ -90,6 +97,10 @@ export default function Categories() {
                                                                             type="text"
                                                                             name="category"
                                                                             id="category"
+                                                                            value={category.name}
+                                                                            onChange={(ev) =>
+                                                                                setCategory({...category, category: ev.target.value})
+                                                                            }
                                                                             className="block w-[400px] rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 "
                                                                             placeholder="Category"
                                                                         />
