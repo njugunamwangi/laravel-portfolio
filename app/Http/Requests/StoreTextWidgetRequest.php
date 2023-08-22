@@ -22,6 +22,11 @@ class StoreTextWidgetRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'key' => 'required|string|unique:text_widgets,key|max:255',
+            'image' => 'string|max:1000',
+            'title' => 'required|string|unique:text_widgets,title|max:2000',
+            'content' => 'text',
+            'active' => 'required|integer'
         ];
     }
 }

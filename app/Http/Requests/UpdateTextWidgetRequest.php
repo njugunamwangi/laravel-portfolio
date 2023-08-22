@@ -11,7 +11,7 @@ class UpdateTextWidgetRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,11 @@ class UpdateTextWidgetRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'key' => 'required|string|max:255',
+            'image' => 'string|max:1000',
+            'title' => 'required|string|max:2000',
+            'content' => 'text',
+            'active' => 'required|integer'
         ];
     }
 }
