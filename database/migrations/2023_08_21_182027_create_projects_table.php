@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name', 2000);
             $table->string('slug', 2000);
             $table->string('image', 2000);
-            $table->string('projectUrl', 2000);
+            $table->string('project_url', 2000);
             $table->boolean('active');
             $table->timestamps();
         });

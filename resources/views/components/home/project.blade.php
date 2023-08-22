@@ -59,7 +59,7 @@
                     :title="$item['title']"
                     :categories="$item['category']"
                     :image="$item['image']"
-                    :projectUrl="$item['projectUrl']" ></x-project-item>
+                    :project_url="$item['project_url']" ></x-project-item>
             @endforeach
         </div>
     </div>
