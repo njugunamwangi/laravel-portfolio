@@ -7,6 +7,8 @@ import TextWidgets from "./views/TextWidgets.jsx";
 import AuthLayout from "./views/components/AuthLayout.jsx";
 import AdminLayout from "./views/components/AdminLayout.jsx";
 import Categories from "./views/Categories.jsx";
+import ProjectView from "./views/ProjectView.jsx";
+import TextWidgetView from "./views/TextWidgetView.jsx";
 
 const router = createBrowserRouter([
     {
@@ -26,9 +28,17 @@ const router = createBrowserRouter([
                 element: <Projects />
             },
             {
+                path: 'projects/add',
+                element: <ProjectView />
+            },
+            {
                 path: 'text-widgets',
                 element: <TextWidgets />
-            }
+            },
+            {
+                path: 'text-widgets/create',
+                element: <TextWidgetView />
+            },
         ]
     },
     {
