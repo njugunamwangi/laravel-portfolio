@@ -15,9 +15,9 @@ export default function TextWidgets() {
         <AdminComponent
             title="Text Widgets"
             buttons={(
-                <TButton color="green" to="/categories/create">
+                <TButton color="green" to="/text-widgets/create">
                     <PlusCircleIcon className="w-6 h-6 mr-2" />
-                    Add Text Widget
+                    Create Text Widget
                 </TButton>
             )}
         >

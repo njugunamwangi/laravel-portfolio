@@ -20,7 +20,7 @@ export default function Projects() {
             <AdminComponent
                 title="Projects"
                 buttons={(
-                    <TButton color="green" to="/projects/create">
+                    <TButton color="green" to="/projects/add">
                         <PlusCircleIcon className="h-6 w-6 mr-2" />
                         Add Project
                     </TButton>
