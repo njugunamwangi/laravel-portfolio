@@ -7,7 +7,7 @@ export default function ProjectItem({project, onDeleteClick}) {
             <div>
                 <img
                     className="rounded-lg"
-                    src={project.imageUrl}
+                    src={project.image_url}
                 />
             </div>
             <div className="mt-2 flex items-center gap-x-4 text-xs">
