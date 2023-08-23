@@ -1,9 +1,14 @@
 import { useState } from "react";
 import AdminComponent from "./components/AdminComponent";
 import { PhotoIcon } from "@heroicons/react/20/solid";
+import TButton from "./components/core/TButton";
+import axiosClient from "../axios";
+import { useStateContext } from "./context/ContextProvider";
+import { useNavigate } from "react-router-dom";
 
 export default function TextWidgetView() {
     const { showToast } = useStateContext()
+
     const [ textWidget, setTextWidget ] = useState({
         key: "",
         image: null,
@@ -13,9 +18,23 @@ export default function TextWidgetView() {
         active: true,
     })
 
+    const navigate = useNavigate()
+
     const onSubmit = (ev) => {
         ev.preventDefault()
+
+        const payload = { ...textWidget }
+        if(payload.image) {
+            payload.image = payload.image_url
+        }
+
+        delete payload.image_url
+
+        axiosClient.post('/textWidget', payload)
+            .then((res) => {
+                navigate('/text-widgets')
                 showToast('Text widget created successfully')
+            })
     }
 
     const onImageChoose = (ev) => {
@@ -155,7 +174,7 @@ export default function TextWidgetView() {
 
                             {/* Active */}
                             <div className="border-b border-gray-900/10 pb-12">
-                                <div className="mt-10 space-y-10">
+                                <div className="mt-2 ">
                                     <fieldset>
                                         <div className="mt-6 space-y-6">
                                             <div className="relative flex gap-x-3">
@@ -182,6 +201,12 @@ export default function TextWidgetView() {
                                 </div>
                             </div>
                             {/* Active */}
+
+                            <div className="bg-gray-50 px-4 py-3 text-right sm:px-6">
+                                <TButton>
+                                    Save
+                                </TButton>
+                            </div>
                         </div>
                     </div>
                 </form>

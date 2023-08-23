@@ -5,15 +5,20 @@ import CategoryItem from "./components/CategoryItem";
 import { Fragment, useRef, useState } from "react";
 import { Transition, Dialog } from '@headlessui/react'
 import { PlusIcon, SquaresPlusIcon } from "@heroicons/react/20/solid";
+import axiosClient from '../axios'
+import { useNavigate } from "react-router-dom";
 
 export default function Categories() {
     const { showToast } = useStateContext()
+
     const { categories } = useStateContext()
 
     const [category, setCategory] = useState({
         category: "",
         slug: ""
     })
+
+    const navigate = useNavigate()
 
     const [isAddCategoryModalOpen, setIsAddCategoryModalOpen] = useState(false)
 
@@ -30,11 +35,17 @@ export default function Categories() {
     };
 
     const onSubmit = (ev) => {
+        ev.preventDefault()
 
+        const payload = { ...category }
+
+        axiosClient.post('/category', payload)
+            .then((res) => {
+                navigate('/categories')
+                setIsAddCategoryModalOpen(false);
                 showToast('Category created successfully')
+            })
     }
-
-
 
     const cancelButtonRef = useRef(null)
 
@@ -99,7 +110,7 @@ export default function Categories() {
                                                                             type="text"
                                                                             name="category"
                                                                             id="category"
-                                                                            value={category.name}
+                                                                            value={category.category}
                                                                             onChange={(ev) =>
                                                                                 setCategory({...category, category: ev.target.value})
                                                                             }
