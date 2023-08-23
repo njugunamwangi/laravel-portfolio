@@ -209,6 +209,13 @@ export const ContextProvider = ({children}) => {
 
     const [ toast, setToast ] = useState({message: '', show: false})
 
+    const showToast = (message) => {
+        setToast({message, show: true})
+        setTimeout(() => {
+            setToast({message: '', show: false})
+        }, 5000)
+    }
+
     return (
         <StateContext.Provider value={{
             currentUser,
@@ -219,7 +226,7 @@ export const ContextProvider = ({children}) => {
             projects,
             categories,
             toast,
-            setToast
+            showToast
         }}>
             {children}
         </StateContext.Provider>

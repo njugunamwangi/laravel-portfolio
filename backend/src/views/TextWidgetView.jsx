@@ -3,6 +3,7 @@ import AdminComponent from "./components/AdminComponent";
 import { PhotoIcon } from "@heroicons/react/20/solid";
 
 export default function TextWidgetView() {
+    const { showToast } = useStateContext()
     const [ textWidget, setTextWidget ] = useState({
         key: "",
         image: null,
@@ -14,7 +15,7 @@ export default function TextWidgetView() {
 
     const onSubmit = (ev) => {
         ev.preventDefault()
-        console.log('form submitted');
+                showToast('Text widget created successfully')
     }
 
     const onImageChoose = (ev) => {

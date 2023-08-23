@@ -7,6 +7,7 @@ import { Transition, Dialog } from '@headlessui/react'
 import { PlusIcon, SquaresPlusIcon } from "@heroicons/react/20/solid";
 
 export default function Categories() {
+    const { showToast } = useStateContext()
     const { categories } = useStateContext()
 
     const [category, setCategory] = useState({
@@ -30,6 +31,7 @@ export default function Categories() {
 
     const onSubmit = (ev) => {
 
+                showToast('Category created successfully')
     }
 
 
