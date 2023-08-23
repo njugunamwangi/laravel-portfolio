@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class TextWidget extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'key',
+        'image',
+        'title',
+        'content',
+        'active',
+        'created_at',
+        'updated_at',
+    ];
 }
