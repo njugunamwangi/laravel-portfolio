@@ -21,19 +21,19 @@ class Project extends Component
                 'category' => ['PHP', 'Wordpress'],
                 'title' => 'In2 Drones Technology Solutions',
                 'image' => url('/img/projects/in2drones.png'),
-                'project_url' => 'https://in2dronestechsolutions.com/'
+                'projectUrl' => 'https://in2dronestechsolutions.com/'
             ],
             [
                 'category' => ['PHP', 'Wordpress'],
                 'title' => 'Travel with Lewis',
                 'image' => url('/img/projects/travelwithlewis.png'),
-                'project_url' => 'https://travelwithlewis.co.ke/'
+                'projectUrl' => 'https://travelwithlewis.co.ke/'
             ],
             [
                 'category' => ['PHP', 'Laravel'],
                 'title' => 'Portfolio',
                 'image' => url('/img/projects/portfolio.png'),
-                'project_url' => 'http://localhost'
+                'projectUrl' => 'http://localhost'
             ],
         ];
 
