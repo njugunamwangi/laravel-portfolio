@@ -23,10 +23,10 @@ class StoreTextWidgetRequest extends FormRequest
     {
         return [
             'key' => 'required|string|unique:text_widgets,key|max:255',
-            'image' => 'string|max:1000',
+            'image' => 'string',
             'title' => 'required|string|unique:text_widgets,title|max:2000',
-            'content' => 'text',
-            'active' => 'required|integer'
+            'content' => 'nullable|string',
+            'active' => 'required|boolean'
         ];
     }
 }
