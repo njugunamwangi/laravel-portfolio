@@ -9,6 +9,8 @@ import { useNavigate } from "react-router-dom";
 export default function TextWidgetView() {
     const { showToast } = useStateContext()
 
+    const [ error, setError ] = useState("")
+
     const [ textWidget, setTextWidget ] = useState({
         key: "",
         image: null,
@@ -34,6 +36,11 @@ export default function TextWidgetView() {
             .then((res) => {
                 navigate('/text-widgets')
                 showToast('Text widget created successfully')
+            })
+            .catch((err) => {
+                if (err && err.response) {
+                    setError(err.response.data.errors)
+                }
             })
     }
 
@@ -123,9 +130,9 @@ export default function TextWidgetView() {
                                         className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 "
                                     />
                                 </div>
-                                {/* {error.title && (<small className="text-sm text-red-500">
-                                    {error.title}
-                                </small>)} */}
+                                {error.key && (<small className="text-sm text-red-500">
+                                    {error.key}
+                                </small>)}
                             </div>
                             {/* Key */}
 
@@ -146,9 +153,9 @@ export default function TextWidgetView() {
                                         className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 "
                                     />
                                 </div>
-                                {/* {error.title && (<small className="text-sm text-red-500">
+                                {error.title && (<small className="text-sm text-red-500">
                                     {error.title}
-                                </small>)} */}
+                                </small>)}
                             </div>
                             {/* Title */}
 
