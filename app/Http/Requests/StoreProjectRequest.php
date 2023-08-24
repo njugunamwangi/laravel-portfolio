@@ -23,7 +23,7 @@ class StoreProjectRequest extends FormRequest
     {
         return [
             'name' => 'required|string|unique:projects,name|max:1000',
-            'image' => 'required|string|max:2000',
+            'image' => 'required|string',
             'project_url' => 'required|string|unique:projects,project_url',
             'active' => 'required'
         ];

@@ -20,8 +20,8 @@ class TextWidgetController extends Controller
     {
         return TextWidgetResource::collection(
             TextWidget::query()
-                ->orderBy('created_by', 'desc')
-                ->paginate(10)
+                ->orderBy('created_at', 'desc')
+                ->paginate(12)
         );
     }
 
