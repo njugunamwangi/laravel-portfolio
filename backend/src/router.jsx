@@ -10,6 +10,7 @@ import Categories from "./views/Categories.jsx";
 import ProjectView from "./views/ProjectView.jsx";
 import TextWidgetView from "./views/TextWidgetView.jsx";
 import Pricings from "./views/Pricings.jsx";
+import PricingView from "./views/PricingView.jsx";
 
 const router = createBrowserRouter([
     {
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
             {
                 path: 'pricings',
                 element: <Pricings />
+            },
+            {
+                path: 'pricings/add',
+                element: <PricingView />
             }
         ]
     },
