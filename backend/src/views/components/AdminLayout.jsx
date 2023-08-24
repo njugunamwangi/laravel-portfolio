@@ -11,6 +11,7 @@ const navigation = [
     { name: 'Categories', to: '/categories'},
     { name: 'Projects', to: '/projects'},
     { name: 'Text Widgets', to: '/text-widgets'},
+    { name: 'Pricings', to: '/pricings'},
 ]
 
 function classNames(...classes) {
