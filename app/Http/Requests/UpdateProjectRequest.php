@@ -25,7 +25,8 @@ class UpdateProjectRequest extends FormRequest
             'name' => 'required|string|max:1000',
             'image' => 'required|string',
             'project_url' => 'required|string',
-            'active' => 'required'
+            'active' => 'required',
+            'category' => 'array'
         ];
     }
 }

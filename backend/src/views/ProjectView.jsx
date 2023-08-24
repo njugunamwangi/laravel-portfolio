@@ -4,8 +4,11 @@ import { PhotoIcon } from "@heroicons/react/20/solid";
 import TButton from "./components/core/TButton";
 import axiosClient from "../axios";
 import Loading from "./components/Loading";
+import { useNavigate } from "react-router-dom";
+import { useStateContext } from "./context/ContextProvider";
 
 export default function ProjectView() {
+    const { showToast } = useStateContext()
     const [ project, setProject ] = useState({
         name: "",
         slug: "",
@@ -21,6 +24,8 @@ export default function ProjectView() {
     const [ categories, setCategories ] = useState([])
 
     const [ loading, setLoading ] = useState(false)
+
+    const navigate = useNavigate()
 
     useEffect(() => {
         setLoading(true)

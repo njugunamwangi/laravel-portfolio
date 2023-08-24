@@ -25,7 +25,8 @@ class StoreProjectRequest extends FormRequest
             'name' => 'required|string|unique:projects,name|max:1000',
             'image' => 'required|string',
             'project_url' => 'required|string|unique:projects,project_url',
-            'active' => 'required'
+            'active' => 'required',
+            'category' => 'array'
         ];
     }
 }
