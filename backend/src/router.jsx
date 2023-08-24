@@ -9,6 +9,7 @@ import AdminLayout from "./views/components/AdminLayout.jsx";
 import Categories from "./views/Categories.jsx";
 import ProjectView from "./views/ProjectView.jsx";
 import TextWidgetView from "./views/TextWidgetView.jsx";
+import Pricings from "./views/Pricings.jsx";
 
 const router = createBrowserRouter([
     {
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
                 path: 'text-widgets/create',
                 element: <TextWidgetView />
             },
+            {
+                path: 'pricings',
+                element: <Pricings />
+            }
         ]
     },
     {
