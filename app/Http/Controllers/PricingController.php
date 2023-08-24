@@ -6,6 +6,7 @@ use App\Models\Pricing;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePricingRequest;
 use App\Http\Requests\UpdatePricingRequest;
+use App\Http\Resources\PricingResource;
 
 class PricingController extends Controller
 {
@@ -14,7 +15,11 @@ class PricingController extends Controller
      */
     public function index()
     {
-        //
+        return PricingResource::collection(
+            Pricing::query()
+                ->orderBy('created_at', 'desc')
+                ->paginate(10)
+        );
     }
 
     /**
@@ -22,7 +27,11 @@ class PricingController extends Controller
      */
     public function store(StorePricingRequest $request)
     {
-        //
+        $data = $request->validated();
+
+        $pricing = Pricing::create($data);
+
+        return new PricingResource($pricing);
     }
 
     /**
@@ -30,7 +39,7 @@ class PricingController extends Controller
      */
     public function show(Pricing $pricing)
     {
-        //
+        return new PricingResource($pricing);
     }
 
     /**
@@ -38,7 +47,11 @@ class PricingController extends Controller
      */
     public function update(UpdatePricingRequest $request, Pricing $pricing)
     {
-        //
+        $data = $request->validated();
+
+        $pricing->update($data);
+
+        return new PricingResource($pricing);
     }
 
     /**
@@ -46,6 +59,8 @@ class PricingController extends Controller
      */
     public function destroy(Pricing $pricing)
     {
-        //
+        $pricing->delete();
+
+        return response('', 204);
     }
 }

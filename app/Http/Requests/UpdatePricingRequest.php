@@ -11,7 +11,7 @@ class UpdatePricingRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,10 @@ class UpdatePricingRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required|string|max:256',
+            'description' => 'required|string',
+            'price' => 'required|integer',
+            'discount' => 'integer'
         ];
     }
 }

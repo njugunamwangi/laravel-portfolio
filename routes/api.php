@@ -2,9 +2,9 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PricingController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\TextWidgetController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,6 +24,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('category', CategoryController::class);
     Route::apiResource('project', ProjectController::class);
     Route::apiResource('textWidget', TextWidgetController::class);
+    Route::apiResource('pricing', PricingController::class);
 });
 
 
