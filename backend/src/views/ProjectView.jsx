@@ -1,6 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AdminComponent from "./components/AdminComponent";
 import { PhotoIcon } from "@heroicons/react/20/solid";
+import TButton from "./components/core/TButton";
+import axiosClient from "../axios";
+import { useStateContext } from "./context/ContextProvider";
 
 export default function ProjectView() {
     const [ project, setProject ] = useState({
@@ -9,10 +12,13 @@ export default function ProjectView() {
         image: null,
         image_url: null,
         project_url: "",
-        active: false
+        active: false,
+        category: []
     })
 
-    const [categories] = useState([])
+    const {categories} = useStateContext()
+
+    const [error, setError] = useState("")
 
     const onImageChoose = (ev) => {
         const file = ev.target.files[0]
@@ -34,7 +40,24 @@ export default function ProjectView() {
 
     const onSubmit = (ev) => {
         ev.preventDefault()
-        console.log('form submitted')
+
+        const payload = { ...project }
+        if(payload.image) {
+            payload.image = payload.image_url
+        }
+
+        delete payload.image_url
+
+        axiosClient.post('/project', payload)
+            .then((res) => {
+                navigate('/projects')
+                showToast('Project created successfully')
+            })
+            .catch((err) => {
+                if (err && err.response) {
+                    setError(err.response.data.errors)
+                }
+            })
     }
 
     return (
@@ -84,6 +107,11 @@ export default function ProjectView() {
                                         )}
                                     </div>
                                 </div>
+                                {/* {error.image && (
+                                    <small className="text-sm text-red-500">
+                                        The project photo is required
+                                    </small>
+                                )} */}
                             </div>
                             {/* Image */}
 
@@ -104,9 +132,9 @@ export default function ProjectView() {
                                         className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 "
                                     />
                                 </div>
-                                {/* {error.title && (<small className="text-sm text-red-500">
-                                    {error.title}
-                                </small>)} */}
+                                {error.name && (<small className="text-sm text-red-500">
+                                    {error.name}
+                                </small>)}
                             </div>
                             {/* Project Title */}
 
@@ -120,16 +148,16 @@ export default function ProjectView() {
                                         type="text"
                                         name="project_url"
                                         id="project_url"
-                                        value={project.name}
+                                        value={project.project_url}
                                         onChange={(ev) =>
-                                            setProject({...project, name: ev.target.value})
+                                            setProject({...project, project_url: ev.target.value})
                                         }
                                         className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 "
                                     />
                                 </div>
-                                {/* {error.title && (<small className="text-sm text-red-500">
-                                    {error.title}
-                                </small>)} */}
+                                {error.project_url && (<small className="text-sm text-red-500">
+                                    {error.project_url}
+                                </small>)}
                             </div>
                             {/* Project Url */}
 
@@ -141,18 +169,18 @@ export default function ProjectView() {
                                             <div className="relative flex gap-x-3">
                                                 <div className="flex h-6 items-center">
                                                     <input
-                                                        id="status"
-                                                        name="status"
+                                                        id="active"
+                                                        name="active"
                                                         type="checkbox"
-                                                        value={project.status}
+                                                        value={project.active}
                                                         onChange={(ev) =>
-                                                            setProject({...project, status: ev.target.checked})
+                                                            setProject({...project, active: ev.target.checked})
                                                         }
                                                         className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
                                                     />
                                                 </div>
                                                 <div className="text-sm leading-6">
-                                                    <label htmlFor="status" className="font-medium text-gray-900">
+                                                    <label htmlFor="active" className="font-medium text-gray-900">
                                                         Active
                                                     </label>
                                                     <p className="text-gray-500">Make project publicly available?</p>
@@ -170,27 +198,48 @@ export default function ProjectView() {
 
                                 <div className="mt-4 space-y-4">
                                     <fieldset>
-                                    <div className="">
-                                        <div className="relative flex gap-x-3">
-                                            <div className="flex h-6 items-center">
-                                                <input
-                                                    id="comments"
-                                                    name="comments"
-                                                    type="checkbox"
-                                                    className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                                                />
+                                        {categories.map(category => (
+                                            <div className="relative flex gap-x-3" key={category.id}>
+                                                <div className="flex h-6 items-center">
+                                                    <input
+                                                        id={`category-${category.id}`}
+                                                        name={`category-${category.id}`}
+                                                        type="checkbox"
+                                                        checked={project.category.includes(category.id)}
+                                                        onChange={(ev) => {
+                                                            const isChecked = ev.target.checked;
+                                                            if (isChecked) {
+                                                                setProject(prevProject => ({
+                                                                    ...prevProject,
+                                                                    category: [...prevProject.category, category.id]
+                                                                }));
+                                                            } else {
+                                                                setProject(prevProject => ({
+                                                                    ...prevProject,
+                                                                    category: prevProject.category.filter(id => id !== category.id)
+                                                                }));
+                                                            }
+                                                        }}
+                                                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                                                    />
+                                                </div>
+                                                <div className="text-sm leading-6">
+                                                    <label htmlFor={`category-${category.id}`} className="font-medium text-gray-900">
+                                                        {category.category}
+                                                    </label>
+                                                </div>
                                             </div>
-                                            <div className="text-sm leading-6">
-                                                <label htmlFor="comments" className="font-medium text-gray-900">
-                                                Comments
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
+                                        ))}
                                     </fieldset>
                                 </div>
                             </div>
                             {/* Categories */}
+
+                            <div className="bg-gray-50 px-4 py-3 text-right sm:px-6">
+                                <TButton >
+                                    Save
+                                </TButton>
+                            </div>
                         </div>
                     </div>
                 </form>
