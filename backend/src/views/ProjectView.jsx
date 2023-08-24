@@ -16,7 +16,7 @@ export default function ProjectView() {
         category: []
     })
 
-    const [error, setError] = useState("")
+    const [ error, setError ] = useState("")
 
     const [ categories, setCategories ] = useState([])
 
