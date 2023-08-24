@@ -45,6 +45,11 @@ export default function Categories() {
                 setIsAddCategoryModalOpen(false);
                 showToast('Category created successfully')
             })
+            .catch((err) => {
+                if (err && err.response) {
+                    setError(err.response.data.errors)
+                }
+            })
     }
 
     const cancelButtonRef = useRef(null)
