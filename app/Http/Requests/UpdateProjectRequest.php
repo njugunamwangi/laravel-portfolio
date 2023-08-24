@@ -23,7 +23,7 @@ class UpdateProjectRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:1000',
-            'image' => 'required|string|max:2000',
+            'image' => 'required|string',
             'project_url' => 'required|string',
             'active' => 'required'
         ];
