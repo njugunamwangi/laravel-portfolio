@@ -179,6 +179,13 @@ export default function Categories() {
                                     </>
                                 )}
                             >
+                                {
+                                    categories == 0 && (
+                                        <p>
+                                            You have not created any categories yet
+                                        </p>
+                                    )
+                                }
                                 <ul role="list" className="divide-y divide-gray-100">
                                     {categories.map((category) => (
                                         <CategoryItem category={category} key={category.id} onDeleteClick={onDeleteClick} />
