@@ -28,12 +28,6 @@ export const ContextProvider = ({children}) => {
         _setUserToken(token);
     }
 
-    const [ textWidgets, setTextWidgets ] = useState([])
-
-    const [ projects, setProjects ] = useState([])
-
-    const [ categories, setCategories ] = useState([])
-
     const [ toast, setToast ] = useState({message: '', show: false})
 
     const showToast = (message) => {
@@ -43,36 +37,12 @@ export const ContextProvider = ({children}) => {
         }, 5000)
     }
 
-    useEffect(() => {
-        axiosClient.get('/category')
-            .then(({data}) => {
-                setCategories(data.data)
-            })
-    }, [])
-
-    useEffect(() => {
-        axiosClient.get('/project')
-            .then(({data}) => {
-                setProjects(data.data)
-            })
-    }, [])
-
-    useEffect(() => {
-        axiosClient.get('/textWidget')
-            .then(({data}) => {
-                setTextWidgets(data.data)
-            })
-    }, [])
-
     return (
         <StateContext.Provider value={{
             currentUser,
             setCurrentUser,
             userToken,
             setUserToken,
-            textWidgets,
-            projects,
-            categories,
             toast,
             showToast
         }}>
