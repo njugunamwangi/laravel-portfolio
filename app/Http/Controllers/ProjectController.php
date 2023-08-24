@@ -7,8 +7,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Http\Resources\ProjectResource;
+use App\Models\CategoryProject;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Validator;
 
 class ProjectController extends Controller
 {
@@ -37,6 +39,11 @@ class ProjectController extends Controller
         }
 
         $project = Project::create($data);
+
+        foreach ($data['category'] as $category) {
+            $categoryData = ['category_id' => $category, 'project_id' => $project->id];
+            $this->createCategoryProject($categoryData);
+        }
 
         return new ProjectResource($project);
     }
@@ -119,5 +126,18 @@ class ProjectController extends Controller
         file_put_contents($relativePath, $image);
 
         return $relativePath;
+    }
+
+    private function createCategoryProject($data) {
+        // if (is_array($data['data'])) {
+        //     $data['data'] = json_encode($data['data']);
+        // }
+
+        $validator = Validator::make($data, [
+            'category_id' => 'exists:App\Models\Category,id',
+            'project_id' => 'exists:App\Models\Project,id'
+        ]);
+
+        return CategoryProject::create($validator->validate());
     }
 }
