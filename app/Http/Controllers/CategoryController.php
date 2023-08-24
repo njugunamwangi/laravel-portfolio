@@ -17,7 +17,7 @@ class CategoryController extends Controller
     {
         return CategoryResource::collection(
             Category::query()
-            ->orderBy('created_at', 'desc')
+            ->orderBy('category', 'asc')
             ->paginate(10)
         );
     }
