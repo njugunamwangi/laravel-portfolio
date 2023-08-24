@@ -123,6 +123,9 @@ export default function Categories() {
                                                                             placeholder="Category"
                                                                         />
                                                                     </div>
+                                                                                    {error.category && (<small className="text-sm text-red-500">
+                                                                                        {error.category}
+                                                                                    </small>)}
                                                                 </div>
                                                             </div>
                                                         </div>
