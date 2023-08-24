@@ -1,16 +1,34 @@
-import TButton from "./core/TButton.jsx";
 import {PencilSquareIcon, TrashIcon} from "@heroicons/react/20/solid/index.js";
+import TButton from "./core/TButton.jsx";
 
 export default function TextWidgetItem({textWidget, onDeleteClick}) {
     return (
-        <li key={textWidget.email} className="flex justify-between gap-x-6 py-5">
-            <div className="flex min-w-0 gap-x-4">
-                <div className="min-w-0 flex-auto">
-                    <p className="text-sm font-semibold leading-6 text-gray-900">{textWidget.name}</p>
-                    <p className="mt-1 truncate text-xs leading-5 text-gray-500">{textWidget.email}</p>
-                </div>
+        <article key={textWidget.id} className="flex max-w-xl flex-col items-start justify-between">
+            <div>
+                <img
+                    className="rounded-lg"
+                    src={textWidget.image_url}
+                />
             </div>
-            <div className="hidden shrink-0 sm:flex sm:flex-row sm:items-end">
+            <div className="mt-2 flex items-center gap-x-4 text-xs">
+                <time dateTime={textWidget.datetime} className="text-gray-500">
+                    Completed: {textWidget.date}
+                </time>
+
+            </div>
+            <div className="mt-3 flex items-center justify-between gap-x-4 text-xs ">
+
+            </div>
+            <div className="group relative">
+                <h3 className="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
+                    <a href={textWidget.href}>
+                        <span className="absolute inset-0" />
+                        {textWidget.title}
+                    </a>
+                </h3>
+                <p dangerouslySetInnerHTML={{__html:textWidget.description}} className="mt-5 line-clamp-3 text-sm leading-6 text-gray-600"></p>
+            </div>
+            <div className="flex items-center">
                 <TButton href={`/view/textWidget/${textWidget.slug}`} circle link>
                     <PencilSquareIcon className="w-5 h-5"/>
                 </TButton>
@@ -21,6 +39,6 @@ export default function TextWidgetItem({textWidget, onDeleteClick}) {
                     </TButton>
                 )}
             </div>
-        </li>
+        </article>
     )
 }
