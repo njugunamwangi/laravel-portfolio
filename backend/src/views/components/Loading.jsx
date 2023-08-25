@@ -1,13 +1,15 @@
+import {TwelveDotsScaleRotate} from "react-svg-spinners";
+
 export default function Loading() {
     return (
         <>
-            <div className="mx-auto max-w-2xl py-32 px sm:py-48 lg:py-56">
+            <main className="grid min-h-full place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8">
                 <div className="text-center">
-                    <div className="text-2xl font-semibold tracking-tight text-gray-900 sm:text-6xl">
-                        Loading...
-                    </div>
+                    <p className="text-base">
+                        <TwelveDotsScaleRotate />
+                    </p>
                 </div>
-            </div>
+            </main>
         </>
     )
 }
