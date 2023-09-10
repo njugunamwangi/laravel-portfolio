@@ -73,10 +73,11 @@ export default function ProjectView() {
 
     function onCheckboxChange(category, $event) {
         if ($event.target.checked) {
-            selectedCategories.push(category.id)
+            setSelectedCategories(prevSelectedCategories => [...prevSelectedCategories, category.id]);
         } else {
-            selectedCategories = selectedCategories.filter(op => op != category.id)
+            setSelectedCategories(prevSelectedCategories => prevSelectedCategories.filter(id => id !== category.id));
         }
+        console.log(category)
     }
 
     const onSubmit = (ev) => {
