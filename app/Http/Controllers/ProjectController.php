@@ -40,7 +40,7 @@ class ProjectController extends Controller
 
         $project = Project::create($data);
 
-        foreach ($data['category'] as $category) {
+        foreach ($data['categories'] as $category) {
             $categoryData = ['category_id' => $category, 'project_id' => $project->id];
             $this->createCategoryProject($categoryData);
         }

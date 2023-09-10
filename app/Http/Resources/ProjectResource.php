@@ -23,7 +23,8 @@ class ProjectResource extends JsonResource
             'project_url' => $this->project_url,
             'active' => !!$this->active,
             'created_at' => $this->created_at->format('Y-m-d H:i:s'),
-            'updated_at' => $this->updated_at->format('Y-m-d H:i:s')
+            'updated_at' => $this->updated_at->format('Y-m-d H:i:s'),
+            'categories' => CategoryProjectResource::collection($this->categories)
         ];
     }
 }
