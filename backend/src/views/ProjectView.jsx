@@ -16,7 +16,7 @@ export default function ProjectView() {
         image_url: null,
         project_url: "",
         active: false,
-        category: []
+        categories: []
     })
 
     const [ error, setError ] = useState("")
@@ -38,12 +38,16 @@ export default function ProjectView() {
             })
     }, [])
 
+    let [ selectedCategories, setSelectedCategories] = useState([])
+
     useEffect(() => {
         if (id) {
             setLoading(true)
             axiosClient.get(`/project/${id}`)
                 .then(({ data }) => {
                     setProject(data.data)
+                    const projectCategoryIds = data.data.categories.map(category => category.id);
+                    setSelectedCategories(projectCategoryIds);
                     setLoading(false)
                 })
         }
@@ -67,10 +71,21 @@ export default function ProjectView() {
         reader.readAsDataURL(file);
     }
 
+    function onCheckboxChange(category, $event) {
+        if ($event.target.checked) {
+            selectedCategories.push(category.id)
+        } else {
+            selectedCategories = selectedCategories.filter(op => op != category.id)
+        }
+    }
+
     const onSubmit = (ev) => {
         ev.preventDefault()
 
         const payload = { ...project }
+
+        payload.categories = selectedCategories
+
         if(payload.image) {
             payload.image = payload.image_url
         }
@@ -80,24 +95,14 @@ export default function ProjectView() {
         axiosClient.post('/project', payload)
             .then((res) => {
                 navigate('/projects')
-                showToast('Project created successfully')
+                showToast('Project created successfully', 'success')
             })
             .catch((err) => {
                 if (err && err.response) {
                     setError(err.response.data.errors)
+                    showToast(err.response.data.message)
                 }
             })
-    }
-
-    let selectedCategories = []
-
-    function onCheckboxChange(category, $event) {
-        if ($event.target.checked) {
-            selectedCategories.push(category.uuid)
-        } else {
-            selectedCategories = selectedCategories.filter(op => op != category.uuid)
-        }
-        answerChanged(selectedCategories)
     }
 
     return (
@@ -223,6 +228,7 @@ export default function ProjectView() {
                                                                     name="active"
                                                                     type="checkbox"
                                                                     value={project.active}
+                                                                    checked={project.active}
                                                                     onChange={(ev) =>
                                                                         setProject({...project, active: ev.target.checked})
                                                                     }
@@ -255,7 +261,8 @@ export default function ProjectView() {
                                                                     id={`category-${category.id}`}
                                                                     name={`category-${category.id}`}
                                                                     type="checkbox"
-                                                                    onChange={ev => onCheckboxChange(option, ev)}
+                                                                    onChange={ev => onCheckboxChange(category, ev)}
+                                                                    checked={selectedCategories.includes(category.id)}
                                                                     className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
                                                                 />
                                                             </div>
