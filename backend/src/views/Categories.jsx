@@ -30,8 +30,6 @@ export default function Categories() {
         slug: ""
     })
 
-    const [ error, setError ] = useState("")
-
     const navigate = useNavigate()
 
     const [isAddCategoryModalOpen, setIsAddCategoryModalOpen] = useState(false)
@@ -56,8 +54,15 @@ export default function Categories() {
         axiosClient.post('/category', payload)
             .then((res) => {
                 navigate('/categories')
+                setLoading(true)
                 setIsAddCategoryModalOpen(false);
-                showToast('Category created successfully')
+                axiosClient.get('/category')
+                    .then(({ data }) => {
+                        setCategories(data.data)
+                        setCategory('')
+                        setLoading(false)
+                    })
+                showToast('Category created successfully', 'success')
             })
             .catch((err) => {
                 if (err && err.response) {
@@ -148,9 +153,6 @@ export default function Categories() {
                                                                                             placeholder="Category"
                                                                                         />
                                                                                     </div>
-                                                                                    {error.category && (<small className="text-sm text-red-500">
-                                                                                        {error.category}
-                                                                                    </small>)}
                                                                                 </div>
                                                                             </div>
                                                                         </div>
