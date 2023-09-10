@@ -9,6 +9,7 @@ const StateContext = createContext({
     categories: {},
     toast: {
         message: null,
+        variant: null,
         show: false
     },
     setCurrentUser: () => {},
@@ -28,12 +29,12 @@ export const ContextProvider = ({children}) => {
         _setUserToken(token);
     }
 
-    const [ toast, setToast ] = useState({message: '', show: false})
+    const [ toast, setToast ] = useState({message: '', variant: '', show: false})
 
-    const showToast = (message) => {
-        setToast({message, show: true})
+    const showToast = (message, variant) => {
+        setToast({message, variant, show: true})
         setTimeout(() => {
-            setToast({message: '', show: false})
+            setToast({message: '', variant: '', show: false})
         }, 5000)
     }
 
