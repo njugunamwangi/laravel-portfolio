@@ -23,7 +23,7 @@ export default function Toast() {
                 toast.show && (
                     <>
                         <div className={classes.join(" ")} role="alert">
-                            <span className="font-medium normal-case">{toast.variant} alert!</span> {toast.message}
+                            <span className="font-medium normal-case"> {toast.variant} alert!</span> {toast.message}
                         </div>
                     </>
                 )
