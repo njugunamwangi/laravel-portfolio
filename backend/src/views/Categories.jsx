@@ -61,7 +61,7 @@ export default function Categories() {
             })
             .catch((err) => {
                 if (err && err.response) {
-                    setError(err.response.data.errors)
+                    showToast(err.response.data.message, 'error')
                 }
             })
     }
