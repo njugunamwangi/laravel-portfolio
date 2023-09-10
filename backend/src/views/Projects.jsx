@@ -4,7 +4,7 @@ import { PlusCircleIcon } from "@heroicons/react/20/solid/index.js";
 import TButton from './components/core/TButton.jsx';
 import { useEffect, useState } from "react";
 import axiosClient from "../axios.js";
-import Loading from "./components/Loading.jsx";
+import Loading from "./components/core/Loading.jsx";
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ');

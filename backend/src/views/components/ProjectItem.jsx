@@ -34,7 +34,7 @@ export default function ProjectItem({project, onDeleteClick}) {
                 <p dangerouslySetInnerHTML={{__html:project.description}} className="mt-5 line-clamp-3 text-sm leading-6 text-gray-600"></p>
             </div>
             <div className="flex items-center">
-                <TButton href={`/view/project/${project.slug}`} circle link>
+                <TButton href={`/projects/${project.id}`} circle link>
                     <PencilSquareIcon className="w-5 h-5"/>
                 </TButton>
 

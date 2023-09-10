@@ -3,7 +3,7 @@ import AdminComponent from "./components/AdminComponent";
 import TButton from "./components/core/TButton";
 import { useEffect, useState } from "react";
 import axiosClient from "../axios.js";
-import Loading from "./components/Loading";
+import Loading from "./components/core/Loading.jsx";
 import PricingItem from "./components/PricingItem";
 
 export default function Pricings() {

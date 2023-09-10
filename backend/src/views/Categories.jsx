@@ -7,7 +7,7 @@ import { Transition, Dialog } from '@headlessui/react'
 import { PlusIcon, SquaresPlusIcon } from "@heroicons/react/20/solid";
 import axiosClient from '../axios'
 import { useNavigate } from "react-router-dom";
-import Loading from "./components/Loading";
+import Loading from "./components/core/Loading.jsx";
 
 export default function Categories() {
     const { showToast } = useStateContext()

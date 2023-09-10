@@ -5,7 +5,7 @@ import TButton from "./components/core/TButton.jsx";
 import { PlusCircleIcon } from "@heroicons/react/20/solid";
 import { useEffect, useState } from "react";
 import axiosClient from "../axios.js";
-import Loading from "./components/Loading.jsx";
+import Loading from "./components/core/Loading.jsx";
 
 export default function TextWidgets() {
     // const { textWidgets } = useStateContext()

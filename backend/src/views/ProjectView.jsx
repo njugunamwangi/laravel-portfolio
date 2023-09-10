@@ -3,8 +3,8 @@ import AdminComponent from "./components/AdminComponent";
 import { PhotoIcon } from "@heroicons/react/20/solid";
 import TButton from "./components/core/TButton";
 import axiosClient from "../axios";
-import Loading from "./components/Loading";
-import { useNavigate } from "react-router-dom";
+import Loading from "./components/core/Loading.jsx";
+import { useNavigate, useParams } from "react-router-dom";
 import { useStateContext } from "./context/ContextProvider";
 
 export default function ProjectView() {
@@ -25,6 +25,8 @@ export default function ProjectView() {
 
     const [ loading, setLoading ] = useState(false)
 
+    const { id } = useParams()
+
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -34,6 +36,17 @@ export default function ProjectView() {
                 setCategories(data.data)
                 setLoading(false)
             })
+    }, [])
+
+    useEffect(() => {
+        if (id) {
+            setLoading(true)
+            axiosClient.get(`/project/${id}`)
+                .then(({ data }) => {
+                    setProject(data.data)
+                    setLoading(false)
+                })
+        }
     }, [])
 
     const onImageChoose = (ev) => {
@@ -76,6 +89,17 @@ export default function ProjectView() {
             })
     }
 
+    let selectedCategories = []
+
+    function onCheckboxChange(category, $event) {
+        if ($event.target.checked) {
+            selectedCategories.push(category.uuid)
+        } else {
+            selectedCategories = selectedCategories.filter(op => op != category.uuid)
+        }
+        answerChanged(selectedCategories)
+    }
+
     return (
         <>
             <div>
@@ -88,7 +112,7 @@ export default function ProjectView() {
             <div>
                 {
                     !loading && (
-                        <AdminComponent title="Add Project">
+                        <AdminComponent title={!id ? 'Add Project' : 'Edit Project'}>
                             <form method="post" onSubmit={onSubmit} >
                                 <div className="shadow sm-overflow-hidden sm:rounded-md">
                                     <div className="space-y-6 bg-white px-4 py-5 sm:p-6">
@@ -231,21 +255,7 @@ export default function ProjectView() {
                                                                     id={`category-${category.id}`}
                                                                     name={`category-${category.id}`}
                                                                     type="checkbox"
-                                                                    checked={project.category.includes(category.id)}
-                                                                    onChange={(ev) => {
-                                                                        const isChecked = ev.target.checked;
-                                                                        if (isChecked) {
-                                                                            setProject(prevProject => ({
-                                                                                ...prevProject,
-                                                                                category: [...prevProject.category, category.id]
-                                                                            }));
-                                                                        } else {
-                                                                            setProject(prevProject => ({
-                                                                                ...prevProject,
-                                                                                category: prevProject.category.filter(id => id !== category.id)
-                                                                            }));
-                                                                        }
-                                                                    }}
+                                                                    onChange={ev => onCheckboxChange(option, ev)}
                                                                     className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
                                                                 />
                                                             </div>

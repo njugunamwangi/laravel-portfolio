@@ -11,7 +11,7 @@ import ProjectView from "./views/ProjectView.jsx";
 import TextWidgetView from "./views/TextWidgetView.jsx";
 import Pricings from "./views/Pricings.jsx";
 import PricingView from "./views/PricingView.jsx";
-import NotFound from "./views/components/NotFound.jsx";
+import NotFound from "./views/components/core/NotFound.jsx";
 
 const router = createBrowserRouter([
     {
@@ -32,6 +32,10 @@ const router = createBrowserRouter([
             },
             {
                 path: 'projects/add',
+                element: <ProjectView />
+            },
+            {
+                path: 'projects/:id',
                 element: <ProjectView />
             },
             {

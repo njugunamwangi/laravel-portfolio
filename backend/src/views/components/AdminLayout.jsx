@@ -4,7 +4,7 @@ import {Bars3Icon, BellIcon, UserIcon, XMarkIcon} from '@heroicons/react/24/outl
 import {Navigate, NavLink, Outlet} from "react-router-dom";
 import {useStateContext} from "../context/ContextProvider.jsx";
 import axiosClient from '../../axios.js';
-import Toast from './Toast.jsx';
+import Toast from './core/Toast.jsx';
 
 const navigation = [
     { name: 'Dashboard', to: '/'},
@@ -20,11 +20,6 @@ function classNames(...classes) {
 
 export default function AdminLayout() {
     const { currentUser, userToken, setCurrentUser, setUserToken } = useStateContext()
-
-    const logout = (ev) => {
-        ev.preventDefault()
-        console.log("Logout")
-    }
 
     if (!userToken) {
         return <Navigate to="login" />
