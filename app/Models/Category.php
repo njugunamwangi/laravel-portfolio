@@ -12,6 +12,9 @@ class Category extends Model
 {
     use HasFactory, HasSlug ;
 
+    const CREATED_AT = null;
+    const UPDATED_AT = null;
+
     /**
      * Get the options for generating the slug.
      */
