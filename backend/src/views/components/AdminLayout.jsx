@@ -44,7 +44,7 @@ export default function AdminLayout() {
     return (
         <>
             <div className="min-h-full">
-                <Disclosure as="nav" className="bg-indigo-600">
+                <Disclosure as="nav" className="bg-gray-700">
                     {({ open }) => (
                         <>
                             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
