@@ -1,9 +1,9 @@
 import { useState } from "react";
-import AdminComponent from "./components/AdminComponent";
-import { useStateContext } from "./context/ContextProvider";
+import AdminComponent from "../components/AdminComponent.jsx";
+import { useStateContext } from "../context/ContextProvider.jsx";
 import { useNavigate } from "react-router-dom";
-import axiosClient from "../axios";
-import TButton from "./components/core/TButton";
+import axiosClient from "../../axios.js";
+import TButton from "../components/core/TButton.jsx";
 
 export default function PricingView() {
     const [ pricing, setPricing ] = useState({

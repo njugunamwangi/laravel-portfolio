@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import AdminComponent from "./components/AdminComponent";
+import AdminComponent from "../components/AdminComponent.jsx";
 import { PhotoIcon } from "@heroicons/react/20/solid";
-import TButton from "./components/core/TButton";
-import axiosClient from "../axios";
-import Loading from "./components/core/Loading.jsx";
+import TButton from "../components/core/TButton.jsx";
+import axiosClient from "../../axios.js";
+import Loading from "../components/core/Loading.jsx";
 import { useNavigate, useParams } from "react-router-dom";
-import { useStateContext } from "./context/ContextProvider";
+import { useStateContext } from "../context/ContextProvider.jsx";
 
 export default function ProjectView() {
     const { showToast } = useStateContext()

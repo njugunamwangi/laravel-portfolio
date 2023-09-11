@@ -7,10 +7,10 @@ import TextWidgets from "./views/TextWidgets.jsx";
 import AuthLayout from "./views/components/AuthLayout.jsx";
 import AdminLayout from "./views/components/AdminLayout.jsx";
 import Categories from "./views/Categories.jsx";
-import ProjectView from "./views/ProjectView.jsx";
-import TextWidgetView from "./views/TextWidgetView.jsx";
+import ProjectView from "./views/forms/ProjectView.jsx";
+import TextWidgetView from "./views/forms/TextWidgetView.jsx";
 import Pricings from "./views/Pricings.jsx";
-import PricingView from "./views/PricingView.jsx";
+import PricingView from "./views/forms/PricingView.jsx";
 import NotFound from "./views/components/core/NotFound.jsx";
 
 const router = createBrowserRouter([
@@ -18,6 +18,10 @@ const router = createBrowserRouter([
         path: '/',
         element: <AdminLayout />,
         children: [
+            {
+                path: '/dashboard',
+                element: <Navigate to="/" />
+            },
             {
                 path: '/',
                 element: <Dashboard />

@@ -1,9 +1,9 @@
 import { useState } from "react";
-import AdminComponent from "./components/AdminComponent";
+import AdminComponent from "../components/AdminComponent.jsx";
 import { PhotoIcon } from "@heroicons/react/20/solid";
-import TButton from "./components/core/TButton";
-import axiosClient from "../axios";
-import { useStateContext } from "./context/ContextProvider";
+import TButton from "../components/core/TButton.jsx";
+import axiosClient from "../../axios.js";
+import { useStateContext } from "../context/ContextProvider.jsx";
 import { useNavigate } from "react-router-dom";
 
 export default function TextWidgetView() {
