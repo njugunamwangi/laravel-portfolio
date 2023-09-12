@@ -42,8 +42,13 @@ export default function Categories() {
         setIsAddCategoryModalOpen(false);
     };
 
-    const onDeleteClick = () => {
-        console.log('Deleted');
+    const onDeleteClick = (id) => {
+        if (window.confirm("Are you sure you want to delete this category?")) {
+            axiosClient.delete(`/category/${id}`)
+                .then(() => {
+                showToast('The category was deleted', 'success');
+            });
+        }
     };
 
     const onSubmit = (ev) => {

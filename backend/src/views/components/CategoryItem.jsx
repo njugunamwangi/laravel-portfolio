@@ -15,7 +15,7 @@ export default function CategoryItem({category, onDeleteClick}) {
                 </TButton>
 
                 {category.id && (
-                    <TButton onClick={onDeleteClick} circle link color="red">
+                    <TButton onClick={ev => onDeleteClick(category.id)} circle link color="red">
                         <TrashIcon className="w-5 h-5"/>
                     </TButton>
                 )}
