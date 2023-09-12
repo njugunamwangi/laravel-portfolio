@@ -16,11 +16,7 @@ export default function Pricings() {
 
     useEffect(() => {
         setLoading(true)
-        axiosClient.get('/pricing')
-            .then(({data}) => {
-                setPricings(data.data)
-                setLoading(false)
-            })
+        getPricings()
     }, [])
 
     const onDeleteClick = (id) => {
@@ -33,7 +29,12 @@ export default function Pricings() {
         }
     };
 
-        console.log("Delete clicked")
+    const getPricings = () => {
+        axiosClient.get('/pricing')
+            .then(({ data }) => {
+                setPricings(data.data)
+                setLoading(false)
+            })
     }
 
     return (
