@@ -17,21 +17,26 @@ export default function Projects() {
 
     useEffect(() => {
         setLoading(true)
-        axiosClient.get('/project')
-            .then(({ data }) => {
-                setProjects(data.data)
-                setLoading(false)
-            })
+        getProjects()
     }, [])
 
     const onDeleteClick = (id) => {
         if (window.confirm("Are you sure you want to delete this project?")) {
             axiosClient.delete(`/project/${id}`)
                 .then(() => {
+                    getProjects()
                     showToast('The project was deleted', 'success');
                 });
         }
     };
+
+    const getProjects = () => {
+        axiosClient.get('/project')
+            .then(({ data }) => {
+                setProjects(data.data)
+                setLoading(false)
+            })
+    }
 
     return (
        <>
