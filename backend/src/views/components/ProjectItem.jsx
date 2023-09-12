@@ -38,7 +38,7 @@ export default function ProjectItem({project, onDeleteClick}) {
                 </TButton>
 
                 {project.id && (
-                    <TButton onClick={onDeleteClick} circle link color="red">
+                    <TButton onClick={ev => onDeleteClick(project.id)} circle link color="red">
                         <TrashIcon className="w-5 h-5"/>
                     </TButton>
                 )}

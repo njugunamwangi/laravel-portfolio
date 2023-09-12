@@ -24,8 +24,13 @@ export default function Projects() {
             })
     }, [])
 
-    const onDeleteClick = () => {
-        console.log('Deleted');
+    const onDeleteClick = (id) => {
+        if (window.confirm("Are you sure you want to delete this project?")) {
+            axiosClient.delete(`/project/${id}`)
+                .then(() => {
+                    showToast('The project was deleted', 'success');
+                });
+        }
     };
 
     return (
