@@ -18,11 +18,7 @@ export default function Categories() {
 
     useEffect(() => {
         setLoading(true)
-        axiosClient.get('/category')
-            .then(({ data }) => {
-                setCategories(data.data)
-                setLoading(false)
-            })
+        getCategories()
     }, [])
 
     const [category, setCategory] = useState({
@@ -46,10 +42,20 @@ export default function Categories() {
         if (window.confirm("Are you sure you want to delete this category?")) {
             axiosClient.delete(`/category/${id}`)
                 .then(() => {
-                showToast('The category was deleted', 'success');
+                    getCategories()
+                    showToast('The category was deleted', 'success');
             });
         }
     };
+
+    const getCategories = () => {
+        setLoading(true)
+        axiosClient.get('/category')
+            .then(({ data }) => {
+                setCategories(data.data)
+                setLoading(false)
+            })
+    }
 
     const onSubmit = (ev) => {
         ev.preventDefault()
@@ -61,12 +67,8 @@ export default function Categories() {
                 navigate('/categories')
                 setLoading(true)
                 setIsAddCategoryModalOpen(false);
-                axiosClient.get('/category')
-                    .then(({ data }) => {
-                        setCategories(data.data)
-                        setCategory('')
-                        setLoading(false)
-                    })
+                getCategories()
+                setCategory('')
                 showToast('Category created successfully', 'success')
             })
             .catch((err) => {
