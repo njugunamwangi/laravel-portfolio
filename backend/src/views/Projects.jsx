@@ -5,12 +5,14 @@ import TButton from './components/core/TButton.jsx';
 import { useEffect, useState } from "react";
 import axiosClient from "../axios.js";
 import Loading from "./components/core/Loading.jsx";
+import {useStateContext} from "./context/ContextProvider.jsx";
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ');
 }
 
 export default function Projects() {
+    const { showToast } = useStateContext()
     const [ projects, setProjects ] = useState([])
 
     const [ loading, setLoading ] = useState(false)
