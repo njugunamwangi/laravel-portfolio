@@ -12,11 +12,8 @@
             />
         </div>
         <div class="relative z-10 mx-7 -mt-20 rounded-lg bg-white py-9 px-3 text-center shadow-lg" >
-            <span class="text-primary mb-2 block text-sm font-semibold">
-                {{ implode(", ", $categories) }}
-            </span>
             <h3 class="text-dark mb-4 text-xl font-bold">{{ $title }}</h3>
-            <x-button-link :href="$projectUrl" variant="outline-primary" >View Details</x-button-link>
+            <x-button-link :href="$projectUrl" variant="outline-primary" target="_blank" >View Details</x-button-link>
         </div>
     </div>
 </div>

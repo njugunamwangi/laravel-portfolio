@@ -21,7 +21,7 @@ class ProjectController extends Controller
     {
         return ProjectResource::collection(
             Project::query()
-                ->orderBy('created_at', 'desc')
+                ->orderBy('name', 'asc')
                 ->paginate(12)
         );
     }
