@@ -35,7 +35,7 @@ export default function TextWidgetView() {
         axiosClient.post('/textWidget', payload)
             .then((res) => {
                 navigate('/text-widgets')
-                showToast('Text widget created successfully')
+                showToast('Text widget created successfully', 'success')
             })
             .catch((err) => {
                 if (err && err.response) {
@@ -194,6 +194,7 @@ export default function TextWidgetView() {
                                                         onChange={(ev) =>
                                                             setTextWidget({...textWidget, active: ev.target.checked})
                                                         }
+                                                        checked={textWidget.active}
                                                         className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
                                                     />
                                                 </div>

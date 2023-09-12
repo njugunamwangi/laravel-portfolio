@@ -10,15 +10,6 @@ export default function TextWidgetItem({textWidget, onDeleteClick}) {
                     src={textWidget.image_url}
                 />
             </div>
-            <div className="mt-2 flex items-center gap-x-4 text-xs">
-                <time dateTime={textWidget.datetime} className="text-gray-500">
-                    Completed: {textWidget.date}
-                </time>
-
-            </div>
-            <div className="mt-3 flex items-center justify-between gap-x-4 text-xs ">
-
-            </div>
             <div className="group relative">
                 <h3 className="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
                     <a href={textWidget.href}>

@@ -27,7 +27,7 @@ export default function PricingView() {
         axiosClient.post('/pricing', payload)
             .then((res) => {
                 navigate('/pricings')
-                showToast('Pricing package created successfully')
+                showToast('Pricing package created successfully', 'success')
             })
             .catch((err) => {
                 if (err && err.response) {
