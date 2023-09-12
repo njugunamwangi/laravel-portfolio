@@ -5,8 +5,11 @@ import { useEffect, useState } from "react";
 import axiosClient from "../axios.js";
 import Loading from "./components/core/Loading.jsx";
 import PricingItem from "./components/PricingItem";
+import {useStateContext} from "./context/ContextProvider.jsx";
 
 export default function Pricings() {
+    const { showToast } = useStateContext()
+
     const [ pricings, setPricings ] = useState([])
 
     const [ loading, setLoading ] = useState(false)
@@ -20,8 +23,15 @@ export default function Pricings() {
             })
     }, [])
 
-    const onDeleteClick = (ev) => {
-        ev.preventDefault()
+    const onDeleteClick = (id) => {
+        if (window.confirm("Are you sure you want to delete this pricing?")) {
+            axiosClient.delete(`/pricing/${id}`)
+                .then(() => {
+                    getPricings()
+                    showToast('The pricing package was deleted', 'success');
+                });
+        }
+    };
 
         console.log("Delete clicked")
     }

@@ -16,7 +16,7 @@ export default function PricingItem({pricing, onDeleteClick}) {
                 </TButton>
 
                 {pricing.id && (
-                    <TButton onClick={onDeleteClick} circle link color="red">
+                    <TButton onClick={ev => onDeleteClick(pricing.id)} circle link color="red">
                         <TrashIcon className="w-5 h-5"/>
                     </TButton>
                 )}
