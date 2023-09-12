@@ -8,7 +8,7 @@ import axiosClient from "../axios.js";
 import Loading from "./components/core/Loading.jsx";
 
 export default function TextWidgets() {
-    // const { textWidgets } = useStateContext()
+    const { showToast } = useStateContext()
 
     const [ textWidgets, setTextWidgets ] = useState([])
 
@@ -16,15 +16,25 @@ export default function TextWidgets() {
 
     useEffect(() => {
         setLoading(true)
+        getTextWidgets()
+    }, [])
+
+    const onDeleteClick = (id) => {
+        if (window.confirm("Are you sure you want to delete this text widget?")) {
+            axiosClient.delete(`/textWidget/${id}`)
+                .then(() => {
+                    getTextWidgets()
+                    showToast('The text widget package was deleted', 'success');
+                });
+        }
+    };
+
+    const getTextWidgets = () => {
         axiosClient.get('/textWidget')
             .then(({ data }) => {
                 setTextWidgets(data.data)
                 setLoading(false)
             })
-    }, [])
-
-    const onDeleteClick = () => {
-        console.log("Deleted")
     }
 
     return (
