@@ -6,6 +6,7 @@ import { PlusCircleIcon } from "@heroicons/react/20/solid";
 import { useEffect, useState } from "react";
 import axiosClient from "../axios.js";
 import Loading from "./components/core/Loading.jsx";
+import Pagination from "./components/core/Pagination.jsx";
 
 export default function TextWidgets() {
     const { showToast } = useStateContext()
@@ -14,8 +15,9 @@ export default function TextWidgets() {
 
     const [ loading, setLoading ] = useState(false)
 
+    const [ meta, setMeta ] = useState({})
+
     useEffect(() => {
-        setLoading(true)
         getTextWidgets()
     }, [])
 
@@ -29,10 +31,17 @@ export default function TextWidgets() {
         }
     };
 
-    const getTextWidgets = () => {
-        axiosClient.get('/textWidget')
+    const onPageClick = (link) => {
+        getTextWidgets(link.url);
+    };
+
+    const getTextWidgets = (url) => {
+        url = url || "/textWidget"
+        setLoading(true)
+        axiosClient.get(url)
             .then(({ data }) => {
                 setTextWidgets(data.data)
+                setMeta(data.meta)
                 setLoading(false)
             })
     }
@@ -65,11 +74,12 @@ export default function TextWidgets() {
                                     </p>
                                 )
                             }
-                            <div className="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+                            <div className="mx-auto my-4 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
                                 {textWidgets.map((textWidget) => (
                                     <TextWidgetItem textWidget={textWidget} key={textWidget.id} onDeleteClick={onDeleteClick}/>
                                 ))}
                             </div>
+                            <Pagination meta={meta} onPageClick={onPageClick} />
                         </AdminComponent>
                     )
                 }

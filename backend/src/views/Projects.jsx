@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import axiosClient from "../axios.js";
 import Loading from "./components/core/Loading.jsx";
 import {useStateContext} from "./context/ContextProvider.jsx";
+import Pagination from "./components/core/Pagination.jsx";
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ');
@@ -17,10 +18,15 @@ export default function Projects() {
 
     const [ loading, setLoading ] = useState(false)
 
+    const [ meta, setMeta ] = useState({})
+
     useEffect(() => {
-        setLoading(true)
         getProjects()
     }, [])
+
+    const onPageClick = (link) => {
+        getProjects(link.url);
+    };
 
     const onDeleteClick = (id) => {
         if (window.confirm("Are you sure you want to delete this project?")) {
@@ -32,10 +38,13 @@ export default function Projects() {
         }
     };
 
-    const getProjects = () => {
-        axiosClient.get('/project')
+    const getProjects = (url) => {
+        url = url || "/project"
+        setLoading(true)
+        axiosClient.get(url)
             .then(({ data }) => {
                 setProjects(data.data)
+                setMeta(data.meta)
                 setLoading(false)
             })
     }
@@ -69,11 +78,12 @@ export default function Projects() {
                                         </p>
                                     )
                                 }
-                                <div className="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+                                <div className="mx-auto mt-10 grid mb-8 max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
                                     {projects.map((project) => (
                                         <ProjectItem project={project} key={project.id} onDeleteClick={onDeleteClick}/>
                                     ))}
                                 </div>
+                                <Pagination meta={meta} onPageClick={onPageClick} />
                             </AdminComponent>
                         </div>
                     )

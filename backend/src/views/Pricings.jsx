@@ -6,6 +6,7 @@ import axiosClient from "../axios.js";
 import Loading from "./components/core/Loading.jsx";
 import PricingItem from "./components/PricingItem";
 import {useStateContext} from "./context/ContextProvider.jsx";
+import Pagination from "./components/core/Pagination.jsx";
 
 export default function Pricings() {
     const { showToast } = useStateContext()
@@ -14,10 +15,15 @@ export default function Pricings() {
 
     const [ loading, setLoading ] = useState(false)
 
+    const [ meta, setMeta ] = useState({})
+
     useEffect(() => {
-        setLoading(true)
         getPricings()
     }, [])
+
+    const onPageClick = (link) => {
+        getPricings(link.url);
+    };
 
     const onDeleteClick = (id) => {
         if (window.confirm("Are you sure you want to delete this pricing?")) {
@@ -29,10 +35,13 @@ export default function Pricings() {
         }
     };
 
-    const getPricings = () => {
-        axiosClient.get('/pricing')
+    const getPricings = (url) => {
+        url = url || '/pricing'
+        setLoading(true)
+        axiosClient.get(url)
             .then(({ data }) => {
                 setPricings(data.data)
+                setMeta(data.meta)
                 setLoading(false)
             })
     }
@@ -70,7 +79,7 @@ export default function Pricings() {
                                         <PricingItem pricing={pricing} key={pricing.id} onDeleteClick={onDeleteClick} />
                                     ))}
                                 </ul>
-
+                                <Pagination meta={meta} onPageClick={onPageClick} />
                             </AdminComponent>
                         </div>
                     )

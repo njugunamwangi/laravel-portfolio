@@ -8,6 +8,7 @@ import { PlusIcon, SquaresPlusIcon } from "@heroicons/react/20/solid";
 import axiosClient from '../axios'
 import { useNavigate } from "react-router-dom";
 import Loading from "./components/core/Loading.jsx";
+import Pagination from "./components/core/Pagination.jsx";
 
 export default function Categories() {
     const { showToast } = useStateContext()
@@ -16,8 +17,9 @@ export default function Categories() {
 
     const [ loading, setLoading ] = useState(false)
 
+    const [ meta, setMeta ] = useState({})
+
     useEffect(() => {
-        setLoading(true)
         getCategories()
     }, [])
 
@@ -38,6 +40,10 @@ export default function Categories() {
         setIsAddCategoryModalOpen(false);
     };
 
+    const onPageClick = (link) => {
+        getCategories(link.url);
+    };
+
     const onDeleteClick = (id) => {
         if (window.confirm("Are you sure you want to delete this category?")) {
             axiosClient.delete(`/category/${id}`)
@@ -48,11 +54,13 @@ export default function Categories() {
         }
     };
 
-    const getCategories = () => {
+    const getCategories = (url) => {
+        url = url || "/category";
         setLoading(true)
-        axiosClient.get('/category')
+        axiosClient.get(url)
             .then(({ data }) => {
                 setCategories(data.data)
+                setMeta(data.meta)
                 setLoading(false)
             })
     }
@@ -195,11 +203,15 @@ export default function Categories() {
                                         </p>
                                     )
                                 }
-                                <ul role="list" className="divide-y divide-gray-100">
-                                    {categories.map((category) => (
-                                        <CategoryItem category={category} key={category.id} onDeleteClick={onDeleteClick} />
-                                    ))}
-                                </ul>
+                                <div className="">
+                                    <ul role="list" className="divide-y divide-gray-100">
+                                        {categories.map((category) => (
+                                            <CategoryItem category={category} key={category.id} onDeleteClick={onDeleteClick} />
+                                        ))}
+                                    </ul>
+                                </div>
+
+                                <Pagination meta={meta} onPageClick={onPageClick} />
                             </AdminComponent>
                         </div>
                     )
