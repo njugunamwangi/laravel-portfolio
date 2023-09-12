@@ -15,6 +15,8 @@ class ProjectResource extends JsonResource
      */
     public function toArray($request)
     {
+        $categories = $this->categories->pluck('category')->flatten()->unique()->values()->all();
+
         return [
             'id' => $this->id,
             'name' => $this->name,
@@ -24,6 +26,7 @@ class ProjectResource extends JsonResource
             'active' => !!$this->active,
             'created_at' => $this->created_at->format('Y-m-d H:i:s'),
             'updated_at' => $this->updated_at->format('Y-m-d H:i:s'),
+            'categoryTabs' => $categories,
             'categories' => CategoryProjectResource::collection($this->categories)
         ];
     }

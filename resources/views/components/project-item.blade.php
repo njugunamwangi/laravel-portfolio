@@ -1,5 +1,5 @@
 <div
-    x-data="{ categories: {{ json_encode($categories) }} }"
+    x-data="{ categories: {{ json_encode($categoryTabs) }} }"
     :class="showCards == 'all' || categories.includes(showCards) ? 'block' : 'hidden' "
     class="w-full px-4 md:w-1/2 xl:w-1/3"
 >

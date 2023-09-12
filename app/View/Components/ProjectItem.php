@@ -11,7 +11,7 @@ class ProjectItem extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct(public string $title, public array $categories, public string $image, public string $projectUrl)
+    public function __construct(public string $title, public array $categoryTabs, public string $image, public string $projectUrl)
     {
         //
     }
