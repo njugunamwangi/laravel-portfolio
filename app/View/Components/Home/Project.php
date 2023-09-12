@@ -2,8 +2,11 @@
 
 namespace App\View\Components\Home;
 
+use App\Http\Resources\ProjectResource;
 use Closure;
+use App\Models\Project as Projects;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\Request;
 use Illuminate\View\Component;
 use Illuminate\Support\Arr;
 
@@ -14,30 +17,14 @@ class Project extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public function __construct(Request $request)
     {
-        $this->items = [
-            [
-                'category' => ['PHP', 'Wordpress'],
-                'title' => 'In2 Drones Technology Solutions',
-                'image' => url('/img/projects/in2drones.png'),
-                'projectUrl' => 'https://in2dronestechsolutions.com/'
-            ],
-            [
-                'category' => ['PHP', 'Wordpress'],
-                'title' => 'Travel with Lewis',
-                'image' => url('/img/projects/travelwithlewis.png'),
-                'projectUrl' => 'https://travelwithlewis.co.ke/'
-            ],
-            [
-                'category' => ['PHP', 'Laravel'],
-                'title' => 'Portfolio',
-                'image' => url('/img/projects/portfolio.png'),
-                'projectUrl' => 'http://localhost'
-            ],
-        ];
+        $projects = Projects::all()->where('active', true);
 
-        $this->tabs = array_unique(Arr::flatten(Arr::pluck($this->items, 'category')));
+        $this->items = ProjectResource::collection($projects)->toArray($request);
+
+        $this->tabs = array_unique(Arr::flatten(Arr::pluck($this->items, 'categoryTabs')));
+        sort($this->tabs);
     }
 
     /**
