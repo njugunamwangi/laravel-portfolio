@@ -23,9 +23,9 @@ class UpdateTextWidgetRequest extends FormRequest
     {
         return [
             'key' => 'required|string|max:255',
-            'image' => 'string|max:1000',
+            'image' => 'string',
             'title' => 'required|string|max:2000',
-            'content' => 'text',
+            'content' => 'string',
             'active' => 'required|integer'
         ];
     }

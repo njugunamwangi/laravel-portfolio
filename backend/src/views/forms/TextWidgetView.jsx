@@ -48,16 +48,30 @@ export default function TextWidgetView() {
 
         delete payload.image_url
 
-        axiosClient.post('/textWidget', payload)
-            .then((res) => {
-                navigate('/text-widgets')
-                showToast('Text widget created successfully', 'success')
-            })
-            .catch((err) => {
-                if (err && err.response) {
-                    setError(err.response.data.errors)
-                }
-            })
+        let res = null;
+
+        setLoading(true)
+        if (id) {
+            res = axiosClient.put(`/textWidget/${id}`, payload)
+        } else {
+            res = axiosClient.post('/textWidget', payload)
+        }
+            res
+                .then((res) => {
+                    navigate('/text-widgets')
+                    if (id) {
+                        showToast('Text widget updated successfully', 'info')
+                        setLoading(false)
+                    } else {
+                        showToast('Text widget created successfully', 'success')
+                        setLoading(false)
+                    }
+                })
+                .catch((err) => {
+                    if (err && err.response) {
+                        setError(err.response.data.errors)
+                    }
+                })
     }
 
     const onImageChoose = (ev) => {
@@ -231,7 +245,7 @@ export default function TextWidgetView() {
 
                                     <div className="bg-gray-50 px-4 py-3 text-right sm:px-6">
                                         <TButton>
-                                            Save
+                                            {id ? 'Update' : 'Save'}
                                         </TButton>
                                     </div>
                                 </div>
