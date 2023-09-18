@@ -51,6 +51,10 @@ const router = createBrowserRouter([
                 element: <TextWidgetView />
             },
             {
+                path: 'text-widgets/:id',
+                element: <TextWidgetView />
+            },
+            {
                 path: 'pricings',
                 element: <Pricings />
             },

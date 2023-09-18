@@ -20,7 +20,7 @@ export default function TextWidgetItem({textWidget, onDeleteClick}) {
                 <p dangerouslySetInnerHTML={{__html:textWidget.description}} className="mt-5 line-clamp-3 text-sm leading-6 text-gray-600"></p>
             </div>
             <div className="flex items-center">
-                <TButton href={`/view/textWidget/${textWidget.slug}`} circle link>
+                <TButton href={`/text-widgets/${textWidget.id}`} circle link target="_self">
                     <PencilSquareIcon className="w-5 h-5"/>
                 </TButton>
 
