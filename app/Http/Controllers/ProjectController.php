@@ -8,6 +8,7 @@ use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Http\Resources\ProjectResource;
 use App\Models\CategoryProject;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
@@ -75,6 +76,23 @@ class ProjectController extends Controller
 
         $project->update($data);
 
+        $existingIds = $project->categories->pluck('id')->toArray();
+
+        $newIds = $data['categories'];
+
+        $toDelete = array_diff($existingIds, $newIds);
+
+        $toAdd = array_diff($newIds, $existingIds);
+
+        foreach ($toDelete as $toBeDeleted) {
+            $this->destroyCategoryProject($project->id, $toBeDeleted);
+        }
+
+        foreach ($toAdd as $category) {
+            $categoryData = ['category_id' => $category, 'project_id' => $project->id];
+            $this->createCategoryProject($categoryData);
+        }
+
         return new ProjectResource($project);
     }
 
@@ -129,9 +147,6 @@ class ProjectController extends Controller
     }
 
     private function createCategoryProject($data) {
-        // if (is_array($data['data'])) {
-        //     $data['data'] = json_encode($data['data']);
-        // }
 
         $validator = Validator::make($data, [
             'category_id' => 'exists:App\Models\Category,id',
@@ -139,5 +154,13 @@ class ProjectController extends Controller
         ]);
 
         return CategoryProject::create($validator->validate());
+    }
+
+    private function destroyCategoryProject($id, $toBeDeleted) {
+        $deleteCategoryProject = CategoryProject::query()
+            ->where('project_id', '=', $id)
+            ->where('category_id', '=', $toBeDeleted)
+            ->get();
+        return CategoryProject::destroy($deleteCategoryProject);
     }
 }

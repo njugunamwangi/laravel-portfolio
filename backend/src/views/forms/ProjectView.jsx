@@ -93,17 +93,30 @@ export default function ProjectView() {
 
         delete payload.image_url
 
-        axiosClient.post('/project', payload)
-            .then((res) => {
-                navigate('/projects')
-                showToast('Project created successfully', 'success')
-            })
-            .catch((err) => {
-                if (err && err.response) {
-                    setError(err.response.data.errors)
-                    showToast(err.response.data.message)
-                }
-            })
+        let res = null;
+        setLoading(true)
+        if (id) {
+            res = axiosClient.put(`/project/${id}`, payload)
+        } else {
+            res = axiosClient.post('/project', payload)
+        }
+            res
+                .then((res) => {
+                    navigate('/projects')
+                    if (id) {
+                        setLoading(false)
+                        showToast('Project updated successfully', 'info')
+                    } else {
+                        setLoading(false)
+                        showToast('Project created successfully', 'success')
+                    }
+                })
+                .catch((err) => {
+                    if (err && err.response) {
+                        setError(err.response.data.errors)
+                        showToast(err.response.data.message)
+                    }
+                })
     }
 
     return (
