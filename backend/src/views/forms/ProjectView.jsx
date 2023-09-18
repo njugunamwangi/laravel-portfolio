@@ -77,7 +77,6 @@ export default function ProjectView() {
         } else {
             setSelectedCategories(prevSelectedCategories => prevSelectedCategories.filter(id => id !== category.id));
         }
-        console.log(category)
     }
 
     const onSubmit = (ev) => {
