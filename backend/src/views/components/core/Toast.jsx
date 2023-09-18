@@ -10,6 +10,16 @@ export default function Toast() {
             ...classes,
             "text-green-800", "bg-green-50", "dark:text-green-400"
         ];
+    } else if (toast.variant === 'info') {
+        classes = [
+            ...classes,
+            "text-blue-800", "bg-blue-50", "dark:text-blue-400"
+        ];
+    } else if (toast.variant === 'warning') {
+        classes = [
+            ...classes,
+            "text-warning-800", "bg-warning-50", "dark:text-warning-400"
+        ];
     } else {
         classes = [
             ...classes,
